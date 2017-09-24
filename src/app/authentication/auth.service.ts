@@ -12,7 +12,7 @@ export class AuthService {
   constructor(
     private tokenService: Angular2TokenService, 
     public router: Router) {
-      this.tokenService.init({ apiPath : "http://localhost:3000"})
+      this.tokenService.init({ apiPath : "http://192.168.99.102:3000"})
 
     }
 

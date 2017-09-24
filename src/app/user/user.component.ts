@@ -10,7 +10,7 @@ export class UserComponent implements OnInit {
 
   constructor(private _tokenService: Angular2TokenService) {
     this._tokenService.init({
-      registerAccountPath: 'http://localhost:3000/auth'
+      registerAccountPath: 'http://192.168.99.102:3000/auth'
     });
   }
 

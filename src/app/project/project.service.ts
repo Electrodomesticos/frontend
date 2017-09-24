@@ -6,11 +6,14 @@ import 'rxjs/add/operator/toPromise';
 
 import { Project } from './project';
 
+
+
+
 @Injectable() 
 export class ProjectService {
   headers: Headers;
   options: RequestOptions;
-  private projectsUrl = 'http://localhost:3000/projects';
+  private projectsUrl = "http://192.168.99.102:3000/projects";
 
   constructor(
     private http: Http
