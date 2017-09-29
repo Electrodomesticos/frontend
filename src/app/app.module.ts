@@ -1,47 +1,47 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { ProjectListComponent } from './project/project-list.component';
-import { ProjectShowComponent } from './project/project-show.component';
-import { ProjectNewComponent } from './project/project-new.component';
-import { HomepageComponent } from './homepage/homepage.component';
-import { ProjectService } from './project/project.service';
+import { AppRoutes } from './app.routing';
+import { SidebarModule } from './sidebar/sidebar.module';
+import { FooterModule } from './shared/footer/footer.module';
+import { NavbarModule} from './shared/navbar/navbar.module';
+import { FixedPluginModule} from './shared/fixedplugin/fixedplugin.module';
+import { NguiMapModule} from '@ngui/map';
 
-import { AppRoutingModule } from './app-routing.module';
-import { UserComponent } from './user/user.component';
-import { Angular2TokenService } from 'angular2-token';
-
-import { SharedModule }         from './shared/shared.module';
-import { AuthenticationModule } from './authentication/authentication.module';
-
-import { AuthLinksComponent } from './authentication/auth-links.component';
+import { DashboardComponent }   from './dashboard/dashboard.component';
+import { UserComponent }   from './user/user.component';
+import { TableComponent }   from './table/table.component';
+import { TypographyComponent }   from './typography/typography.component';
+import { IconsComponent }   from './icons/icons.component';
+import { MapsComponent }   from './maps/maps.component';
+import { NotificationsComponent }   from './notifications/notifications.component';
+import { UpgradeComponent }   from './upgrade/upgrade.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProjectListComponent,
-    ProjectShowComponent,
-    ProjectNewComponent,
-    HomepageComponent,
-    AuthLinksComponent,
-    UserComponent
+    DashboardComponent,
+    UserComponent,
+    TableComponent,
+    TypographyComponent,
+    IconsComponent,
+    MapsComponent,
+    NotificationsComponent,
+    UpgradeComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpModule,
-    AppRoutingModule,
-    SharedModule,
-    AuthenticationModule
+    RouterModule.forRoot(AppRoutes),
+    SidebarModule,
+    NavbarModule,
+    FooterModule,
+    FixedPluginModule,
+    NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyBr-tgUtpm8cyjYVQDrjs8YpZH7zBNWPuY'})
+
   ],
-  providers: [
-    Angular2TokenService,
-    ProjectService
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

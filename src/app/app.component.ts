@@ -1,18 +1,11 @@
 import { Component } from '@angular/core';
 
-import { Angular2TokenService } from 'angular2-token';
+declare var $:any;
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'app works!';
 
-
-  constructor(private _tokenService: Angular2TokenService) {
-    this._tokenService.init();
-  }
-
-}
+export class AppComponent{}
