@@ -1,4 +1,4 @@
-FROM node:6.10.2
+FROM node:6.11.3
 RUN useradd --user-group --create-home --shell /bin/false app
 
 ENV HOME=/frontend
