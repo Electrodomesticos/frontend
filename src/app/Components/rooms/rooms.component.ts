@@ -5,21 +5,19 @@ import { Room } from '../../Models/room';
 @Component({
   selector: 'app-rooms',
   templateUrl: './rooms.component.html',
-  styleUrls: ['./rooms.component.css']
+  styleUrls: ['./rooms.component.css'],
+  providers: [RoomsService]
 })
 export class RoomsComponent implements OnInit {
 
   
   rooms: Room[];
-  room = new Room;
-  tempData = new Room;
+
 
   constructor(private roomService: RoomsService) {
   }
 
-  ngOnInit() {
-    this.loadRooms();
-  }
+  
 
   /*  
   loadRooms() {
@@ -34,6 +32,10 @@ export class RoomsComponent implements OnInit {
           resRoomData => this.rooms = resRoomData,
             error => console.log("Error :: " + error)
         )
+}
+
+ngOnInit() {
+  this.loadRooms();
 }
  
 }
