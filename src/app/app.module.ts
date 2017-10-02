@@ -11,6 +11,9 @@ import { NavbarModule} from './shared/navbar/navbar.module';
 import { FixedPluginModule} from './shared/fixedplugin/fixedplugin.module';
 import { NguiMapModule} from '@ngui/map';
 
+
+
+
 import { DashboardComponent }   from './dashboard/dashboard.component';
 import { UserComponent }   from './user/user.component';
 import { TableComponent }   from './table/table.component';
@@ -23,6 +26,28 @@ import { RoomsComponent } from './Components/rooms/rooms.component';
 
 import { RoomsService } from './Services/rooms/rooms.service';
 
+
+///
+//import { ProjectListComponent } from './project/project-list.component';
+//import { ProjectShowComponent } from './project/project-show.component';
+//import { ProjectNewComponent } from './project/project-new.component';
+
+//COMPONENTS
+import { HomepageComponent } from './homepage/homepage.component';
+import { AuthLinksComponent } from './authentication/auth-links.component';
+//
+
+//MODULO
+import { SharedModule }         from './shared/shared.module';
+import { AuthenticationModule } from './authentication/authentication.module';
+
+//SERVICIOS 
+import { Angular2TokenService } from 'angular2-token';
+import { LoggedInGuard } from './authentication/logged-in-guard.service';
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +59,11 @@ import { RoomsService } from './Services/rooms/rooms.service';
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
-    RoomsComponent
+    RoomsComponent,
+////
+    HomepageComponent,
+    AuthLinksComponent
+    //
   ],
   imports: [
     BrowserModule,
@@ -44,11 +73,13 @@ import { RoomsService } from './Services/rooms/rooms.service';
     FooterModule,
     FixedPluginModule,
     HttpModule,
-    NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyBr-tgUtpm8cyjYVQDrjs8YpZH7zBNWPuY'})
+    NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyBr-tgUtpm8cyjYVQDrjs8YpZH7zBNWPuY'}),
+    AuthenticationModule
 
   ],
   providers: [
-    RoomsService
+    RoomsService,
+    Angular2TokenService
   ],
   bootstrap: [AppComponent]
 })
