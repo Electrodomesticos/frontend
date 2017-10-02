@@ -4,14 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { ProjectListComponent } from './project/project-list.component';
-import { ProjectShowComponent } from './project/project-show.component';
-import { ProjectNewComponent } from './project/project-new.component';
-import { HomepageComponent } from './homepage/homepage.component';
-import { ProjectService } from './project/project.service';
+
 
 import { AppRoutingModule } from './app-routing.module';
-import { UserComponent } from './user/user.component';
+
 import { Angular2TokenService } from 'angular2-token';
 
 import { SharedModule }         from './shared/shared.module';
@@ -22,12 +18,8 @@ import { AuthLinksComponent } from './authentication/auth-links.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ProjectListComponent,
-    ProjectShowComponent,
-    ProjectNewComponent,
-    HomepageComponent,
-    AuthLinksComponent,
-    UserComponent
+    AuthLinksComponent
+
   ],
   imports: [
     BrowserModule,
@@ -39,8 +31,7 @@ import { AuthLinksComponent } from './authentication/auth-links.component';
     AuthenticationModule
   ],
   providers: [
-    Angular2TokenService,
-    ProjectService
+    Angular2TokenService
   ],
   bootstrap: [AppComponent]
 })
