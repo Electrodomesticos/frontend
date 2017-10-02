@@ -5,6 +5,8 @@ import {
   Validators
 } from '@angular/forms';
 import { AuthService }      from '../auth.service';
+import { Router } from "@angular/router";
+
 
 @Component({
   templateUrl: './login.component.html',
@@ -16,7 +18,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router:Router,
   ) {}
 
   ngOnInit() {
@@ -29,11 +32,21 @@ export class LoginComponent implements OnInit {
 
   submit(value: any) {
     this.submitted = true;
-    if (!this.loginForm.valid) { return; }
+    if (this.loginForm.valid) {
+      this.router.navigateByUrl('/inicio');
+      
+
+     }
 
     this.authService.logIn(value.email, value.password).subscribe(
-      this.authService.redirectAfterLogin.bind(this.authService),
-      this.afterFailedLogin.bind(this)
+      res => {
+        debugger;
+        if(res.status == 200){
+          this.router.navigate(['wwww.google.com']);
+          this.authService.redirectAfterLogin.bind(this.authService),
+          this.afterFailedLogin.bind(this)
+        }
+      }
     );
   }
 
