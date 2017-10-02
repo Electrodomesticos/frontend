@@ -7,13 +7,7 @@ import { LoggedInGuard } from '../authentication/logged-in-guard.service';
 
 @NgModule({
   imports: [
-    RouterModule.forChild([
-      {
-        path: '',
-        canActivate: [LoggedInGuard],
-        component: AccountComponent
-      }
-    ])
+ 
   ],
   exports: [
     RouterModule

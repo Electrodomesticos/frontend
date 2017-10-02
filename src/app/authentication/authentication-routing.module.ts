@@ -10,21 +10,12 @@ import { SignUpComponent }         from './sign-up/sign-up.component';
 import { OauthCallbackComponent }  from './oauth-callback.component';
 
 const routes: Routes = [
-  { path: 'log-in', component: LoginComponent },
-  { path: 'login', redirectTo: '/log-in' },
-  { path: 'sign-up', component: SignUpComponent },
-  { path: 'signup', redirectTo: '/sign-up' }
 ] 
 
 @NgModule({
   imports: [
     RouterModule.forChild([
-      {
-        path: '',
-        canActivateChild: [LoggedOutGuard],
-        children: routes
-      },
-      { path: 'oauth_callback', component: OauthCallbackComponent }
+
     ])
   ],
   exports: [
