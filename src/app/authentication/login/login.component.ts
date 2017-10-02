@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
       res => {
         debugger;
         if(res.status == 200){
-          this.router.navigate(['wwww.google.com']);
+          this.router.navigate(['/dashboard']);
           this.authService.redirectAfterLogin.bind(this.authService),
           this.afterFailedLogin.bind(this)
         }
