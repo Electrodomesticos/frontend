@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService }  from './authentication/auth.service'
 
 declare var $:any;
 
@@ -8,4 +9,16 @@ declare var $:any;
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent{}
+export class AppComponent{
+
+  constructor(private authService: AuthService) {}
+  
+
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
+
+
+
+
+}

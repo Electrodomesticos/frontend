@@ -10,12 +10,28 @@ import { NotificationsComponent }   from './notifications/notifications.componen
 import { UpgradeComponent }   from './upgrade/upgrade.component';
 import { RoomsComponent }   from './Components/rooms/rooms.component';
 
+//NUEVAS RUTAS
+import { HomepageComponent } from './homepage/homepage.component';
+import { LoggedInGuard } from './authentication/logged-in-guard.service';
+
+//
 export const AppRoutes: Routes = [
     {
         path: '',
-        redirectTo: 'dashboard',
+//        redirectTo: 'dashboard',
+//        pathMatch: 'full',
+        redirectTo: 'homepage',
         pathMatch: 'full',
+
+
     },
+    {
+        path: 'homepage',
+        component: HomepageComponent
+    },
+
+
+    //////
     {
         path: 'dashboard',
         component: DashboardComponent
