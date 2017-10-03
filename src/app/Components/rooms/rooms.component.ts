@@ -12,6 +12,7 @@ export class RoomsComponent implements OnInit {
 
   
   rooms: Room[];
+  tempData = new Room;
 
 
   constructor(private roomService: RoomsService) {
@@ -33,6 +34,36 @@ export class RoomsComponent implements OnInit {
             error => console.log("Error :: " + error)
         )
 }
+
+
+createRoom(room: Room) {
+  this.roomService.setRooms(room).subscribe(
+    data => console.log('espacio para un alert', data),
+    error => console.error('espacio para un alert fallido'), ()=>this.loadRooms());
+  
+}
+
+updateRoom(name){
+  console.log("Antes", this.tempData)
+  this.tempData.name=name.name;
+  console.log("Despues",this.tempData)
+  this.roomService.updateRoom(this.tempData).subscribe(
+    data => console.log('espacio para un alert', data),
+    error => console.error('espacio para un alert fallido'), ()=>this.loadRooms());
+}
+deleteRoom(room) {
+  this.roomService.deleteRoom(room.id)
+  .subscribe(
+    data => {'espacio para un alert'},
+    //error => {this.modal.open()},
+    error => {'espacio para un alert fallido'},
+    ()=>this.loadRooms()
+    ); 
+}
+
+
+
+
 
 ngOnInit() {
   this.loadRooms();

@@ -9,12 +9,12 @@ export class RoomsService {
   
   private urlget : string = "http://localhost:3000/rooms";
 
-  //headers: Headers;
-  //options: RequestOptions;
+  headers: Headers;
+  options: RequestOptions;
 
   constructor(private http: Http) {
-    //this.headers = new Headers({ 'Content-Type': 'application/json' });
-    //this.options = new RequestOptions({ headers: this.headers });
+    this.headers = new Headers({ 'Content-Type': 'application/json' });
+    this.options = new RequestOptions({ headers: this.headers });
   }
   /*
   getRooms(): Observable<Room[]> {
@@ -31,8 +31,33 @@ export class RoomsService {
         .catch(this.handleError);
 }
 
+setRooms(room: Room): Observable<Room> {
+  return this.http.post(this.urlget, JSON.stringify(room), this.options).map(response => response.json())
+}
+
+updateRoom(room): Observable<Room> {
+  const url = `${this.urlget}/${room.id}`;
+  console.log(url)
+  return this.http.put(url, JSON.stringify(room), 
+    this.options).map((res: Response) => res.json())
+    .catch(this.handleError);
+}
+
+deleteRoom(id: number): Observable<Room> {
+  const url = `${this.urlget}/${id}`;
+  console.log(url)
+  return this.http.delete(url, this.options)
+  .map(this.extractData)
+  .catch(this.handleError);         
+}
+
 private handleError(error: Response) {
     return Observable.throw(error.statusText);
+}
+
+private extractData(res: Response) {
+  let body = res.json();
+  return body || {};
 }
 
 
