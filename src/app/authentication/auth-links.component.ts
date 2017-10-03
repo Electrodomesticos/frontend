@@ -5,15 +5,14 @@ import { AuthService } from './auth.service';
 @Component({
   selector: 'app-auth-links',
   template: `
-  <div class="ui form">
+  <div class="ui form"  style="margin-left: 81%;">
     <div class="fields">
       <div class="field">
-        <button routerLink="/log-in" routerLinkActive="active" *ngIf="isLoggedOut()" class="btn btn-outline-success my-2 my-sm-0" type="submit">Log In</button>
-      </div>
-      <div class="field">
+       
+         <button routerLink="/log-in" routerLinkActive="active" *ngIf="isLoggedOut()" class="btn btn-outline-success my-2 my-sm-0" type="submit">Log In</button>
         <button routerLink="/sign-up" routerLinkActive="active" *ngIf="isLoggedOut()" class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign Up</button>
       </div>
-      <div class="field"> 
+      <div class="field" > 
         <button (click)="logOut()" *ngIf="isLoggedIn()" class="btn btn-outline-success my-2 my-sm-0" type="submit">Log Out</button>   
       </div>
     </div>
