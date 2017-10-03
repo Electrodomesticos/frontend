@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RoomsService } from '../../Services/rooms/rooms.service';
 import { Room } from '../../Models/room';
 
+
 @Component({
   selector: 'app-rooms',
   templateUrl: './rooms.component.html',
