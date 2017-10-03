@@ -12,6 +12,7 @@ export class RoomsComponent implements OnInit {
 
   
   rooms: Room[];
+  room = new Room;
   tempData = new Room;
 
 
@@ -43,9 +44,9 @@ createRoom(room: Room) {
   
 }
 
-updateRoom(name){
+updateRoom(room){
   console.log("Antes", this.tempData)
-  this.tempData.name=name.name;
+  this.tempData.name=room.name;
   console.log("Despues",this.tempData)
   this.roomService.updateRoom(this.tempData).subscribe(
     data => console.log('espacio para un alert', data),
