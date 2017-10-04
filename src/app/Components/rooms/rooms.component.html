@@ -25,7 +25,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                          <tr *ngFor="let room of rooms">
+                          <tr *ngFor="let room of rooms" [class.selected]="room === selectedRoom" (click)="onSelect(room)">
                             <td>
                               {{room.domicile_id}}
                             </td>
@@ -46,40 +46,7 @@
 
 
 
-<div class="container-fluid">
-  <h4>
-          Ingrese el nombre de la Habitación
-        </h4>
-          <form (ngSubmit)="createRoom(room)" #postForm="ngForm">
-                  <fieldset>                                
-                    <div class="form-group">
-                      <label for="name">
-                        Nombre
-                      </label>
-                      <input required id="name" type="text" class="form-control" placeholder="Ingrese el nombre aqui" #name='ngModel' [(ngModel)]="room.name" name='name'>
-                    </div>
-            
-                    <div class="form-group">
-                        <label for="domicile_id">
-                            Domicilio
-                        </label>
-                        <input required id="domicile_id" type="number" class="form-control" placeholder="Ingrese el domicilio" #domicile_is='ngModel' [(ngModel)]="room.domicile_id" name='domicile_id'>
-                    </div>
-            
-                    
-                 
-                    <div class="form-group">
-                 
-                    <button type="submit" class="btn btn-success" [disabled]="!postForm.form.valid" id="setGeneral" (click)="loadRooms()">
-                          Guardar
-                        </button>
-                    </div>
-                 
-                  </fieldset>
-                </form>
-        
-      
-  </div>
+<app-outlets [room]="selectedRoom"></app-outlets>
 
 
   

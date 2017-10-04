@@ -1,3 +1,45 @@
-<p>
-  outlets works!
-</p>
+
+
+
+
+<div *ngIf="room" class="container-fluid">
+    <h2>Habitación: {{room.name}}</h2>
+    <div><label>id: </label>{{room.id}}</div> 
+  <button (click)="loadOutlets(room)">Load</button>
+ 
+  <div class="row">
+      <div class="col-md-12">
+          <div class="card">
+              <div class="header">
+                  <h4 class="title">Tomas</h4>
+                  <p class="category">Tomas disponibles para esta habitación</p>
+              </div>
+              <div class="content table-responsive table-full-width">
+                  <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>
+                            habitación
+                          </th>
+                          <th>
+                            Estado
+                          </th>                          
+                        </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let outlet of outlets">
+                            <td>
+                              {{outlet.room_id}}
+                            </td>
+                            <td>
+                              {{outlet.state}}
+                            </td>                            
+                          </tr>
+                      </tbody>
+                  </table>
+
+              </div>
+          </div>
+      </div>    
+  </div>
+</div>

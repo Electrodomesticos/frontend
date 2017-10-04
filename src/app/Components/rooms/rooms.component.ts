@@ -15,12 +15,16 @@ export class RoomsComponent implements OnInit {
   rooms: Room[];
   room = new Room;
   tempData = new Room;
-
+  selectedRoom: Room;
 
   constructor(private roomService: RoomsService) {
   }
 
   
+  onSelect(room: Room): void {
+    this.selectedRoom = room;
+  }
+
 
   /*  
   loadRooms() {
