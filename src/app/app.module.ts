@@ -32,8 +32,11 @@ import { MapsComponent }   from './maps/maps.component';
 import { NotificationsComponent }   from './notifications/notifications.component';
 import { UpgradeComponent }   from './upgrade/upgrade.component';
 import { RoomsComponent } from './Components/rooms/rooms.component';
+import { OutletsComponent } from './Components/outlets/outlets.component';
 
 import { RoomsService } from './Services/rooms/rooms.service';
+import { OutletsService } from './Services/outlets/outlets.service';
+
 
 
 
@@ -54,7 +57,8 @@ import { RoomsService } from './Services/rooms/rooms.service';
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
-    RoomsComponent
+    RoomsComponent,
+    OutletsComponent
 
   ],
   imports: [
@@ -76,7 +80,8 @@ import { RoomsService } from './Services/rooms/rooms.service';
   ],
   providers: [
     Angular2TokenService,
-    RoomsService
+    RoomsService,
+    OutletsService
   ],
   bootstrap: [AppComponent]
 })
