@@ -6,13 +6,18 @@
               <div class="header">
                   <h4 class="title">Habitaciones</h4>
                   <p class="category">Lista de habitaciones disponibles</p>
+                  <button type="button" class="btn btn-default btn-circle" *ngIf="rooms">{{ rooms.length }}</button>
+                  <button type="button" class="btn btn-sm btn-primary btn-create" (click)="modal.open()">
+                  
+                    Crear
+                  </button>
               </div>
               <div class="content table-responsive table-full-width">
                   <table class="table table-striped">
                       <thead>
                         <tr>
                           <th>
-                            ID
+                            Domicilio
                           </th>
                           <th>
                             Nombre
@@ -22,7 +27,7 @@
                       <tbody>
                           <tr *ngFor="let room of rooms">
                             <td>
-                              {{room.id}}
+                              {{room.domicile_id}}
                             </td>
                             <td>
                               {{room.name}}
@@ -36,4 +41,80 @@
       </div>    
   </div>
 </div>
+
+
+
+
+
+<div class="container-fluid">
+  <h4>
+          Ingrese el nombre de la Habitación
+        </h4>
+          <form (ngSubmit)="createRoom(room)" #postForm="ngForm">
+                  <fieldset>                                
+                    <div class="form-group">
+                      <label for="name">
+                        Nombre
+                      </label>
+                      <input required id="name" type="text" class="form-control" placeholder="Ingrese el nombre aqui" #name='ngModel' [(ngModel)]="room.name" name='name'>
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="domicile_id">
+                            Domicilio
+                        </label>
+                        <input required id="domicile_id" type="number" class="form-control" placeholder="Ingrese el domicilio" #domicile_is='ngModel' [(ngModel)]="room.domicile_id" name='domicile_id'>
+                    </div>
+            
+                    
+                 
+                    <div class="form-group">
+                 
+                    <button type="submit" class="btn btn-success" [disabled]="!postForm.form.valid" id="setGeneral" (click)="loadRooms()">
+                          Guardar
+                        </button>
+                    </div>
+                 
+                  </fieldset>
+                </form>
+        
+      
+  </div>
+
+
+  
+  
+ <bs-modal #modal>
+   <form (ngSubmit)="createRoom(room)" #postForm="ngForm">
+     <bs-modal-header [showDismiss]="true">
+         <h4 class="modal-title"> Ingrese la información de la Habitación</h4>
+     </bs-modal-header>
+     <bs-modal-body>
+        <div class="form-group">
+            <label for="name">
+              Nombre
+            </label>
+            <input required id="name" type="text" class="form-control" placeholder="Ingrese el nombre aqui" #name='ngModel' [(ngModel)]="room.name" name='name'>
+          </div>
+  
+          <div class="form-group">
+              <label for="domicile_id">
+                  Domicilio
+              </label>
+              <input required id="domicile_id" type="number" class="form-control" placeholder="Ingrese el domicilio" #domicile_is='ngModel' [(ngModel)]="room.domicile_id" name='domicile_id'>
+          </div>
+     </bs-modal-body>
+     <bs-modal-footer>
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">
+            Cancelar
+          </button>
+          <button type="submit" class="btn btn-primary" id="setPosition" (click)="loadRooms()" (click)="modal.close()">
+            Guardar
+          </button>
+     </bs-modal-footer>
+   </form>
+ </bs-modal>
+
+
+
 
