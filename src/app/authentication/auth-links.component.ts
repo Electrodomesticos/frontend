@@ -5,7 +5,7 @@ import { AuthService } from './auth.service';
 @Component({
   selector: 'app-auth-links',
   template: `
-  <div class="ui form"  style="margin-left: 81%;">
+  <div class="ui form"  style="margin-left: 81%; margin-top:14px; position:absolute; z-index:1;">
     <div class="fields">
       <div class="field">
        
