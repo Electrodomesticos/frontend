@@ -49,6 +49,12 @@ createRoom(room: Room) {
   
 }
 
+guardarDatos(room){
+  console.log("guardarDatos", room)
+  this.tempData=room;
+
+}
+
 updateRoom(room){
   console.log("Antes", this.tempData)
   this.tempData.name=room.name;
