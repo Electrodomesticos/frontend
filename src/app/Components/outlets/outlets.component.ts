@@ -11,6 +11,7 @@ import { Room } from '../../Models/room';
 export class OutletsComponent implements OnInit {
 
   outlets: Outlet[];
+  tempData = new Outlet;
   @Input() room: Room;
   //room_id = this.room.id;
   //test = this.room.getId();
@@ -26,6 +27,44 @@ export class OutletsComponent implements OnInit {
             error => console.log("Error :: " + error)
         )
 }
+
+guardarDatos(outlet){
+  console.log("guardarDatos", outlet)
+  this.tempData=outlet;
+
+}
+/*
+turnOutlet(outlet){
+  console.log("Antes", this.tempData)
+  if(this.tempData.estate==true){
+    this.tempData.estate=false;
+    console.log("Despues",this.tempData)
+  }
+  else{
+    this.tempData.estate=true;
+    console.log("Despues",this.tempData)
+  }
+  this.outletService.updateOutlet(this.tempData).subscribe(
+    data => console.log('espacio para un alert', data),
+    error => console.error('espacio para un alert fallido'));
+}
+
+*/
+turnOutlet(outlet: Outlet){
+  
+  if(outlet.estate==true){
+     outlet.estate=false;
+    
+  }
+  else{
+    outlet.estate=true;
+    
+  }
+  this.outletService.updateOutlet(outlet).subscribe(
+    data => console.log('espacio para un alert', data),
+    error => console.error('espacio para un alert fallido'));
+}
+
 
   ngOnInit() {
   

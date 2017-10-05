@@ -22,6 +22,9 @@
                             habitación
                           </th>
                           <th>
+                              toma
+                            </th>
+                          <th>
                             Estado
                           </th>                          
                         </tr>
@@ -32,7 +35,10 @@
                               {{outlet.room_id}}
                             </td>
                             <td>
-                              {{outlet.state}}
+                                {{outlet.id}}
+                              </td>
+                            <td>
+                              <button class="btn btn-sm btn-primary btn-create" (click)="turnOutlet(outlet)">Turn</button>
                             </td>                            
                           </tr>
                       </tbody>

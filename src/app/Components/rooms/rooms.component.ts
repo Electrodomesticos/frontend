@@ -63,6 +63,7 @@ updateRoom(room){
     data => console.log('espacio para un alert', data),
     error => console.error('espacio para un alert fallido'), ()=>this.loadRooms());
 }
+
 deleteRoom(room) {
   this.roomService.deleteRoom(room.id)
   .subscribe(
