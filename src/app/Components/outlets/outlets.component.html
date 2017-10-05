@@ -3,40 +3,45 @@
 
 
 <div *ngIf="room" class="container-fluid">
-    <h2>Habitación: {{room.name}}</h2>
-    <div><label>id: </label>{{room.id}}</div> 
-  <button (click)="loadOutlets(room)">Load</button>
+    
+    
+  
  
   <div class="row">
       <div class="col-md-12">
           <div class="card">
               <div class="header">
-                  <h4 class="title">Tomas</h4>
+                  <h2>Habitación: {{room.name}}</h2>
+                  
                   <p class="category">Tomas disponibles para esta habitación</p>
+                  <button type="button" class="btn btn-sm btn-primary btn-create" (click)="loadOutlets(room)">Ver Tomas</button>
+                  <button type="button" class="btn btn-sm btn-primary btn-create" (click)="createOutlet(room)">Crear Toma</button>
               </div>
               <div class="content table-responsive table-full-width">
                   <table class="table table-striped">
                       <thead>
                         <tr>
+                         
                           <th>
-                            habitación
-                          </th>
-                          <th>
-                              toma
+                              Toma
                             </th>
                           <th>
                             Turn
                           </th> 
                           <th>
                               Estado
-                            </th>                          
+                            </th> 
+                            <th>
+                              Eliminar Toma
+                            </th>  
+                            <th>
+                                Electrodoméstico
+                            </th>                       
                         </tr>
                       </thead>
                       <tbody>
                           <tr *ngFor="let outlet of outlets">
-                            <td>
-                              {{outlet.room_id}}
-                            </td>
+                            
                             <td>
                                 {{outlet.id}}
                               </td>
@@ -55,7 +60,20 @@
                                 <div *ngIf="!outlet.estate">
                                     apagado
                                 </div>
-                            </td>                        
+                            </td>  
+                            <td>
+                                <div class="options">
+                                    <a class="ti-trash" (click)="deleteOutlet(outlet)" (click)="loadOutlets(room)"></a>
+                                </div>
+                            </td> 
+                            <td>
+                                <select (click)="guardarDatos(outlet)" [(ngModel)]="selAppliance">
+                                <option *ngFor="let appliance of appliances" [ngValue]="appliance">{{appliance.name}}</option>
+                                </select>
+                                <button type="button" class="btn btn-sm btn-primary btn-create"  (click)="updateAppliance(appliance)">Seleccionar</button>
+                                
+                                {{selAppliance.name}}
+                            </td>                     
                           </tr>
                       </tbody>
                   </table>

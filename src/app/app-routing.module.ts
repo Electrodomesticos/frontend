@@ -17,6 +17,7 @@ import { MapsComponent }   from './maps/maps.component';
 import { NotificationsComponent }   from './notifications/notifications.component';
 import { UpgradeComponent }   from './upgrade/upgrade.component';
 import { RoomsComponent }   from './Components/rooms/rooms.component';
+import { HouseholdAppliancesComponent }   from './Components/household-appliances/household-appliances.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -60,6 +61,10 @@ const routes: Routes = [
 {
     path: 'rooms',
     component: RoomsComponent
+},
+{
+    path: 'appliances',
+    component: HouseholdAppliancesComponent
 }
 ] 
 

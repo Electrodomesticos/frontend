@@ -33,10 +33,12 @@ import { NotificationsComponent }   from './notifications/notifications.componen
 import { UpgradeComponent }   from './upgrade/upgrade.component';
 import { RoomsComponent } from './Components/rooms/rooms.component';
 import { OutletsComponent } from './Components/outlets/outlets.component';
+import { HouseholdAppliancesComponent } from './Components/household-appliances/household-appliances.component';
 
 import { RoomsService } from './Services/rooms/rooms.service';
 import { OutletsService } from './Services/outlets/outlets.service';
-import { HouseholdAppliancesComponent } from './components/household-appliances/household-appliances.component';
+import { HouseholdAppliancesService } from './Services/household_appliances/household-appliances.service';
+
 
 
 
@@ -83,7 +85,8 @@ import { HouseholdAppliancesComponent } from './components/household-appliances/
   providers: [
     Angular2TokenService,
     RoomsService,
-    OutletsService
+    OutletsService,
+    HouseholdAppliancesService
   ],
   bootstrap: [AppComponent]
 })
