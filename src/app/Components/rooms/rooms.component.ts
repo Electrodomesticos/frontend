@@ -15,12 +15,16 @@ export class RoomsComponent implements OnInit {
   rooms: Room[];
   room = new Room;
   tempData = new Room;
-
+  selectedRoom: Room;
 
   constructor(private roomService: RoomsService) {
   }
 
   
+  onSelect(room: Room): void {
+    this.selectedRoom = room;
+  }
+
 
   /*  
   loadRooms() {
@@ -45,6 +49,12 @@ createRoom(room: Room) {
   
 }
 
+guardarDatos(room){
+  console.log("guardarDatos", room)
+  this.tempData=room;
+
+}
+
 updateRoom(room){
   console.log("Antes", this.tempData)
   this.tempData.name=room.name;
@@ -53,6 +63,7 @@ updateRoom(room){
     data => console.log('espacio para un alert', data),
     error => console.error('espacio para un alert fallido'), ()=>this.loadRooms());
 }
+
 deleteRoom(room) {
   this.roomService.deleteRoom(room.id)
   .subscribe(
