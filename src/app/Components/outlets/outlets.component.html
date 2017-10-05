@@ -32,8 +32,11 @@
                               Estado
                             </th> 
                             <th>
-                              Eliminar
-                            </th>                         
+                              Eliminar Toma
+                            </th>  
+                            <th>
+                                Electrodoméstico
+                            </th>                       
                         </tr>
                       </thead>
                       <tbody>
@@ -62,7 +65,15 @@
                                 <div class="options">
                                     <a class="ti-trash" (click)="deleteOutlet(outlet)" (click)="loadOutlets(room)"></a>
                                 </div>
-                            </td>                      
+                            </td> 
+                            <td>
+                                <select (click)="guardarDatos(outlet)" [(ngModel)]="selAppliance">
+                                <option *ngFor="let appliance of appliances" [ngValue]="appliance">{{appliance.name}}</option>
+                                </select>
+                                <button type="button" class="btn btn-sm btn-primary btn-create"  (click)="updateAppliance(appliance)">Seleccionar</button>
+                                
+                                {{selAppliance.name}}
+                            </td>                     
                           </tr>
                       </tbody>
                   </table>

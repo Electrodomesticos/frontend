@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { OutletsService } from '../../Services/outlets/outlets.service';
 import { Outlet } from '../../Models/outlet';
 import { Room } from '../../Models/room';
+import { Household_appliance } from '../../Models/household_appliance';
 
 @Component({
   selector: 'app-outlets',
@@ -12,6 +13,13 @@ export class OutletsComponent implements OnInit {
 
   outlets: Outlet[];
   tempData = new Outlet;
+  tempDataA = new Household_appliance;
+  appliances: Household_appliance[];
+  appliance = new Household_appliance;
+  selectedAppliance: Household_appliance;
+
+  selAppliance = new Household_appliance;
+
   @Input() room: Room;
   //room_id = this.room.id;
   //test = this.room.getId();
@@ -29,9 +37,33 @@ export class OutletsComponent implements OnInit {
         )
 }
 
+loadAppliances(): void {
+  this.outletService.getAppliances()
+      .subscribe(
+        resApplianceData => this.appliances = resApplianceData,
+          error => console.log("Error :: " + error)
+      )
+}
+
+  updateAppliance(){
+  this.selAppliance.outlet_id=this.tempData.id;
+  
+  console.log("Antes", this.selAppliance)
+  console.log("outletid", this.tempData.id)
+  this.outletService.updateAppliance(this.selAppliance).subscribe(
+    data => console.log('espacio para un alert', data),
+    error => console.error('espacio para un alert fallido'), ()=>this.loadAppliances());
+}
+
 guardarDatos(outlet){
   console.log("guardarDatos", outlet)
   this.tempData=outlet;
+
+}
+
+guardarDatosA(appliance){
+  console.log("guardarDatos", appliance)
+  this.tempData=appliance;
 
 }
 /*
@@ -88,7 +120,7 @@ deleteOutlet(outlet) {
   ngOnInit() {
   
 
-  //this.loadOutlets(this.room);
+  this.loadAppliances();
   }
 
 }
