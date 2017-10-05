@@ -7,8 +7,8 @@ import 'rxjs/Rx';
 @Injectable()
 export class OutletsService {
 
-  private urlget : string = "http://localhost:3000/rooms/";
-  private urlpost : string = "http://localhost:3000/outlets";
+  private urlget : string = "http://192.168.99.102:3000/rooms/";
+  private urlpost : string = "http://192.168.99.102:3000/outlets";
   
     headers: Headers;
     options: RequestOptions;

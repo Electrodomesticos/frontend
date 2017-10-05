@@ -7,7 +7,7 @@ import 'rxjs/Rx';
 @Injectable()
 export class RoomsService {
   
-  private urlget : string = "http://localhost:3000/rooms";
+  private urlget : string = "http://192.168.99.102:3000/rooms";
 
   headers: Headers;
   options: RequestOptions;
