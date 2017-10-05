@@ -26,6 +26,19 @@ export class OutletsService {
         .catch(this.handleError);
     }
 
+    setOutlets(outlet: Outlet): Observable<Outlet> {
+      return this.http.post(this.urlpost, JSON.stringify(outlet), this.options).map(response => response.json())
+    }
+
+    deleteOutlet(id: number): Observable<Outlet> {
+      const url = `${this.urlpost}/${id}`;
+      console.log(url)
+      return this.http.delete(url, this.options)
+      .map(this.extractData)
+      .catch(this.handleError);         
+    }
+    
+
 
     getOutlets(room_id): Observable<Outlet[]> {
       return this.http
@@ -38,6 +51,11 @@ export class OutletsService {
 
   private handleError(error: Response) {
     return Observable.throw(error.statusText);
+}
+
+private extractData(res: Response) {
+  let body = res.json();
+  return body || {};
 }
 
 }

@@ -16,7 +16,8 @@ export class OutletsComponent implements OnInit {
   //room_id = this.room.id;
   //test = this.room.getId();
 
- 
+
+ nOutlet = new Outlet;
 
   constructor(private outletService: OutletsService) { }
 
@@ -50,6 +51,15 @@ turnOutlet(outlet){
 }
 
 */
+createOutlet(room: Room) {
+  this.nOutlet.room_id = room.id;
+  this.nOutlet.estate = false;
+  this.outletService.setOutlets(this.nOutlet).subscribe(
+    data => console.log('espacio para un alert', data),
+    error => console.error('espacio para un alert fallido'), ()=>this.loadOutlets(room));
+  
+}
+
 turnOutlet(outlet: Outlet){
   
   if(outlet.estate==true){
@@ -63,6 +73,15 @@ turnOutlet(outlet: Outlet){
   this.outletService.updateOutlet(outlet).subscribe(
     data => console.log('espacio para un alert', data),
     error => console.error('espacio para un alert fallido'));
+}
+
+deleteOutlet(outlet) {
+  this.outletService.deleteOutlet(outlet.id)
+  .subscribe(
+    data => {'espacio para un alert'},
+    //error => {this.modal.open()},
+    error => {'espacio para un alert fallido'},
+    ); 
 }
 
 
