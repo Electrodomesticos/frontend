@@ -36,6 +36,7 @@ import { OutletsComponent } from './Components/outlets/outlets.component';
 
 import { RoomsService } from './Services/rooms/rooms.service';
 import { OutletsService } from './Services/outlets/outlets.service';
+import { HouseholdAppliancesComponent } from './components/household-appliances/household-appliances.component';
 
 
 
@@ -58,7 +59,8 @@ import { OutletsService } from './Services/outlets/outlets.service';
     NotificationsComponent,
     UpgradeComponent,
     RoomsComponent,
-    OutletsComponent
+    OutletsComponent,
+    HouseholdAppliancesComponent
 
   ],
   imports: [

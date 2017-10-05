@@ -17,21 +17,40 @@
                       <thead>
                         <tr>
                           <th>
-                            Domicilio
+                            Nombre
                           </th>
                           <th>
-                            Nombre
+                            Tomas
+                          </th> 
+                          <th>
+                              Editar
+                            </th> 
+                          <th>
+                            Eliminar
                           </th>                          
                         </tr>
                       </thead>
                       <tbody>
-                          <tr *ngFor="let room of rooms">
-                            <td>
-                              {{room.domicile_id}}
-                            </td>
+                          <tr *ngFor="let room of rooms" [class.selected]="room === selectedRoom">
                             <td>
                               {{room.name}}
-                            </td>                            
+                            </td>
+                            <td>
+                                <div class="options">
+                                    <a class="ti-plug" (click)="onSelect(room)"></a>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="options">
+                                    <a class="ti-settings" (click)="guardarDatos(room)" (click)="updateRoomModal.open(room)"></a>
+                                </div>
+                                
+                            </td>  
+                            <td> 
+                              <div class="options">
+                                  <a class="ti-trash" (click)="deleteRoom(room)"></a>
+                              </div>
+                            </td>                          
                           </tr>
                       </tbody>
                   </table>
@@ -46,40 +65,7 @@
 
 
 
-<div class="container-fluid">
-  <h4>
-          Ingrese el nombre de la Habitación
-        </h4>
-          <form (ngSubmit)="createRoom(room)" #postForm="ngForm">
-                  <fieldset>                                
-                    <div class="form-group">
-                      <label for="name">
-                        Nombre
-                      </label>
-                      <input required id="name" type="text" class="form-control" placeholder="Ingrese el nombre aqui" #name='ngModel' [(ngModel)]="room.name" name='name'>
-                    </div>
-            
-                    <div class="form-group">
-                        <label for="domicile_id">
-                            Domicilio
-                        </label>
-                        <input required id="domicile_id" type="number" class="form-control" placeholder="Ingrese el domicilio" #domicile_is='ngModel' [(ngModel)]="room.domicile_id" name='domicile_id'>
-                    </div>
-            
-                    
-                 
-                    <div class="form-group">
-                 
-                    <button type="submit" class="btn btn-success" [disabled]="!postForm.form.valid" id="setGeneral" (click)="loadRooms()">
-                          Guardar
-                        </button>
-                    </div>
-                 
-                  </fieldset>
-                </form>
-        
-      
-  </div>
+<app-outlets [room]="selectedRoom"></app-outlets>
 
 
   
@@ -114,7 +100,39 @@
      </bs-modal-footer>
    </form>
  </bs-modal>
-
+ 
+ <bs-modal #updateRoomModal>
+    <form (ngSubmit)="updateRoom(room)" #postForm="ngForm">
+      <bs-modal-header [showDismiss]="true">
+        <h4 class="modal-title">
+            Ingrese la información de la Habitación
+        </h4>
+      </bs-modal-header>
+      <bs-modal-body>
+          <div class="form-group">
+              <label for="name">
+                Nombre
+              </label>
+              <input required id="name" type="text" class="form-control" value={{tempData.name}} #name='ngModel' [(ngModel)]="room.name" name='name'>
+            </div>
+    
+            <div class="form-group">
+                <label for="domicile_id">
+                    Domicilio
+                </label>
+                <input required id="domicile_id" type="number" class="form-control" value={{tempData.domicile_id}} #domicile_is='ngModel' [(ngModel)]="room.domicile_id" name='domicile_id'>
+            </div>
+      </bs-modal-body>
+      <bs-modal-footer>
+          <button type="button" class="btn btn-default" data-dismiss="modal" (click)="updateRoomModal.dismiss()">
+              Cancelar
+            </button>
+            <button type="submit" class="btn btn-primary" id="setPosition" (click)="loadRooms()" (click)="updateRoomModal.close()">
+              Guardar
+            </button>
+      </bs-modal-footer>
+    </form>
+ </bs-modal>
 
 
 

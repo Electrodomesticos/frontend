@@ -8,6 +8,7 @@ import 'rxjs/Rx';
 export class OutletsService {
 
   private urlget : string = "http://localhost:3000/rooms/";
+  private urlpost : string = "http://localhost:3000/outlets";
   
     headers: Headers;
     options: RequestOptions;
@@ -15,6 +16,14 @@ export class OutletsService {
     constructor(private http: Http) {
       this.headers = new Headers({ 'Content-Type': 'application/json' });
       this.options = new RequestOptions({ headers: this.headers });
+    }
+
+    updateOutlet(outlet): Observable<Outlet> {
+      const url = `${this.urlpost}/${outlet.id}`;
+      console.log(url)
+      return this.http.put(url, JSON.stringify(outlet), 
+        this.options).map((res: Response) => res.json())
+        .catch(this.handleError);
     }
 
 
