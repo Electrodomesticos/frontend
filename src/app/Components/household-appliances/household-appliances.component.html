@@ -20,17 +20,34 @@
                             <th>
                                     Consumo W/h
                                   </th>
+                                  <th>
+                                        Editar
+                                      </th> 
+                                    <th>
+                                      Eliminar
+                                    </th>     
                                              
                           </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let appliance of appliances">
+                            <tr *ngFor="let appliance of appliances" [class.selected]="appliance === selectedAppliance">
                               <td>
                                 {{appliance.name}}
                               </td>
                               <td>
                                     {{appliance.electricity_use}}
                                   </td>
+                                  <td>
+                                        <div class="options">
+                                            <a class="ti-settings" (click)="guardarDatos(appliance)" (click)="updateModal.open(appliance)"></a>
+                                        </div>
+                                        
+                                    </td>  
+                                    <td> 
+                                      <div class="options">
+                                          <a class="ti-trash" (click)="deleteAppliance(appliance)"></a>
+                                      </div>
+                                    </td>                          
                                        
                             </tr>
                         </tbody>
@@ -75,3 +92,41 @@
           </bs-modal-footer>
         </form>
       </bs-modal>
+
+      
+ <bs-modal #updateModal>
+        <form (ngSubmit)="updateAppliance(appliance)" #postForm="ngForm">
+          <bs-modal-header [showDismiss]="true">
+            <h4 class="modal-title">
+                Ingrese la información de la Habitación
+            </h4>
+          </bs-modal-header>
+          <bs-modal-body>
+              <div class="form-group">
+                  <label for="name">
+                    Nombre
+                  </label>
+                  <input required id="name" type="text" class="form-control" value={{tempData.name}} #name='ngModel' [(ngModel)]="appliance.name" name='name'>
+                </div>
+        
+                <div class="form-group">
+                    <label for="electricity_use">
+                            Consumo W/h
+                    </label>
+                    <input required id="electricity_use" type="number" class="form-control" value={{tempData.electricity_use}} #electricity_use='ngModel' [(ngModel)]="appliance.electricity_use" name='electricity_use'>
+                </div>
+          </bs-modal-body>
+          <bs-modal-footer>
+              <button type="button" class="btn btn-default" data-dismiss="modal" (click)="updateModal.dismiss()">
+                  Cancelar
+                </button>
+                <button type="submit" class="btn btn-primary" id="setPosition" (click)="loadAppliances()" (click)="updateModal.close()">
+                  Guardar
+                </button>
+          </bs-modal-footer>
+        </form>
+     </bs-modal>
+    
+    
+    
+    
