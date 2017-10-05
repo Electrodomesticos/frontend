@@ -7,7 +7,8 @@
                     <h4 class="title">Electrodomésticos</h4>
                     <p class="category">Lista de Electrodomésticos disponibles</p>
                     <button type="button" class="btn btn-default btn-circle" *ngIf="appliances">{{ appliances.length }}</button>
-                 
+                    <button type="button" class="btn btn-sm btn-primary btn-create" (click)="modal.open()"> Crear
+                        </button>
                 </div>
                 <div class="content table-responsive table-full-width">
                     <table class="table table-striped">
@@ -16,6 +17,9 @@
                             <th>
                               Nombre
                             </th>
+                            <th>
+                                    Consumo W/h
+                                  </th>
                                              
                           </tr>
                         </thead>
@@ -24,6 +28,9 @@
                               <td>
                                 {{appliance.name}}
                               </td>
+                              <td>
+                                    {{appliance.electricity_use}}
+                                  </td>
                                        
                             </tr>
                         </tbody>
@@ -35,3 +42,36 @@
     </div>
   </div>
   
+
+   
+  
+ <bs-modal #modal>
+        <form (ngSubmit)="createAppliance(appliance)" #postForm="ngForm">
+          <bs-modal-header [showDismiss]="true">
+              <h4 class="modal-title"> Ingrese la información del Electrodoméstico</h4>
+          </bs-modal-header>
+          <bs-modal-body>
+             <div class="form-group">
+                 <label for="name">
+                   Nombre
+                 </label>
+                 <input required id="name" type="text" class="form-control" placeholder="Ingrese el nombre aqui" #name='ngModel' [(ngModel)]="appliance.name" name='name'>
+               </div>
+       
+               <div class="form-group">
+                   <label for="electricity_use">
+                       Consumo W/h
+                   </label>
+                   <input required id="electricity_use" type="number" class="form-control" placeholder="Ingrese el domicilio" #electricity_use='ngModel' [(ngModel)]="appliance.electricity_use" name='electricity_use'>
+               </div>
+          </bs-modal-body>
+          <bs-modal-footer>
+             <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">
+                 Cancelar
+               </button>
+               <button type="submit" class="btn btn-primary" id="setPosition" (click)="loadAppliances()" (click)="modal.close()">
+                 Guardar
+               </button>
+          </bs-modal-footer>
+        </form>
+      </bs-modal>

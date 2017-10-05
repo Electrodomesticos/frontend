@@ -28,6 +28,13 @@ export class HouseholdAppliancesComponent implements OnInit {
         )
 }
 
+createAppliance(appliance: Household_appliance) {
+  this.appliancesService.setAppliance(appliance).subscribe(
+    data => console.log('espacio para un alert', data),
+    error => console.error('espacio para un alert fallido'), ()=>this.loadAppliances());
+  
+}
+
   ngOnInit() {
     this.loadAppliances();
   }

@@ -25,11 +25,11 @@ export class HouseholdAppliancesService {
           .catch(this.handleError);
   }
   
-  setRooms(appliance: Household_appliance): Observable<Household_appliance> {
+  setAppliance(appliance: Household_appliance): Observable<Household_appliance> {
     return this.http.post(this.urlget, JSON.stringify(appliance), this.options).map(response => response.json())
   }
   
-  updateRoom(appliance): Observable<Household_appliance> {
+  updateAppliance(appliance): Observable<Household_appliance> {
     const url = `${this.urlget}/${appliance.id}`;
     console.log(url)
     return this.http.put(url, JSON.stringify(appliance), 
@@ -37,7 +37,7 @@ export class HouseholdAppliancesService {
       .catch(this.handleError);
   }
   
-  deleteRoom(id: number): Observable<Household_appliance> {
+  deleteAppliance(id: number): Observable<Household_appliance> {
     const url = `${this.urlget}/${id}`;
     console.log(url)
     return this.http.delete(url, this.options)
