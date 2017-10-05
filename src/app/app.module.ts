@@ -38,6 +38,7 @@ import { HouseholdAppliancesComponent } from './Components/household-appliances/
 import { RoomsService } from './Services/rooms/rooms.service';
 import { OutletsService } from './Services/outlets/outlets.service';
 import { HouseholdAppliancesService } from './Services/household_appliances/household-appliances.service';
+import { CategoriesComponent } from './components/categories/categories.component';
 
 
 
@@ -62,7 +63,8 @@ import { HouseholdAppliancesService } from './Services/household_appliances/hous
     UpgradeComponent,
     RoomsComponent,
     OutletsComponent,
-    HouseholdAppliancesComponent
+    HouseholdAppliancesComponent,
+    CategoriesComponent
 
   ],
   imports: [
