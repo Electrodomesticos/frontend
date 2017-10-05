@@ -25,8 +25,11 @@
                               toma
                             </th>
                           <th>
-                            Estado
-                          </th>                          
+                            Turn
+                          </th> 
+                          <th>
+                              Estado
+                            </th>                          
                         </tr>
                       </thead>
                       <tbody>
@@ -38,8 +41,21 @@
                                 {{outlet.id}}
                               </td>
                             <td>
-                              <button class="btn btn-sm btn-primary btn-create" (click)="turnOutlet(outlet)">Turn</button>
-                            </td>                            
+                            <div *ngIf="outlet.estate">
+                              <button class="btn btn-sm btn-primary btn-create" (click)="turnOutlet(outlet)">Turn Off</button>
+                            </div> 
+                            <div *ngIf="!outlet.estate">
+                                <button class="btn btn-sm btn-primary btn-create" (click)="turnOutlet(outlet)">Turn On</button>
+                              </div> 
+                            </td>  
+                            <td>
+                                <div *ngIf="outlet.estate">
+                                  encendido
+                                </div>
+                                <div *ngIf="!outlet.estate">
+                                    apagado
+                                </div>
+                            </td>                        
                           </tr>
                       </tbody>
                   </table>
