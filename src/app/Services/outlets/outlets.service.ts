@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Outlet } from '../../Models/outlet'
+import { Household_appliance } from '../../Models/household_appliance';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 
@@ -9,6 +10,7 @@ export class OutletsService {
 
   private urlget : string = "http://localhost:3000/rooms/";
   private urlpost : string = "http://localhost:3000/outlets";
+  private urlgetA : string = "http://localhost:3000/household_appliances";
   
     headers: Headers;
     options: RequestOptions;
@@ -25,6 +27,24 @@ export class OutletsService {
         this.options).map((res: Response) => res.json())
         .catch(this.handleError);
     }
+
+    getAppliances(): Observable<Household_appliance[]> {
+      return this.http
+          .get(this.urlgetA)
+          .map((response: Response) => {
+              return <Household_appliance[]>response.json();
+          })
+          .catch(this.handleError);
+  }
+
+  
+  updateAppliance(appliance): Observable<Household_appliance> {
+    const url = `${this.urlgetA}/${appliance.id}`;
+    console.log(url)
+    return this.http.put(url, JSON.stringify(appliance), 
+      this.options).map((res: Response) => res.json())
+      .catch(this.handleError);
+  }
 
     setOutlets(outlet: Outlet): Observable<Outlet> {
       return this.http.post(this.urlpost, JSON.stringify(outlet), this.options).map(response => response.json())
