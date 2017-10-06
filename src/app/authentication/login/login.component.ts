@@ -31,23 +31,31 @@ export class LoginComponent implements OnInit {
   }
 
   submit(value: any) {
-    this.submitted = true;
-    if (this.loginForm.valid) {
-      this.router.navigateByUrl('/inicio');
-      
 
-     }
+    this.submitted = true;
+    if (!this.loginForm.valid) { return; }
 
     this.authService.logIn(value.email, value.password).subscribe(
-      res => {
-    
-        if(res.status == 200){
-          this.router.navigate(['/dashboard']);
-          this.authService.redirectAfterLogin.bind(this.authService),
-          this.afterFailedLogin.bind(this)
-        }
-      }
+      this.authService.redirectAfterLogin.bind(this.authService),
+      this.afterFailedLogin.bind(this)
     );
+    // this.submitted = true;
+    // if (this.loginForm.valid) {
+    //   this.router.navigateByUrl('/dashboard');
+      
+
+    //  }
+
+    // this.authService.logIn(value.email, value.password).subscribe(
+    //   res => {
+    
+    //     if(res.status == 200){
+    //       this.router.navigate(['/dashboard']);
+    //       this.authService.redirectAfterLogin.bind(this.authService),
+    //       this.afterFailedLogin.bind(this)
+    //     }
+    //   }
+    // );
   }
 
   signInWithGithub() {
