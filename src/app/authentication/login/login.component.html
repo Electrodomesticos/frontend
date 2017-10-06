@@ -4,7 +4,7 @@
     <div class="column">
       <h2 class="ui image header">
         <div class="content">
-          Log-in to your account
+          Inicie sesion
         </div>
       </h2>
       <form [formGroup]="loginForm" (ngSubmit)="submit(loginForm.value)" class="ui large form">
@@ -28,7 +28,7 @@
                [submitted]="submitted">
             </app-input-field>
           </div>
-          <button class="btn" type="submit">Submit</button>
+          <button class="btn" type="submit">Ingresar</button>
         </div>
 
         <div class="ui error message"></div>
@@ -36,7 +36,7 @@
       </form>
 
       <div class="ui message">
-        New to us? <a routerLink="/signup">Register</a>
+        Eres un usuario nuevo? <a routerLink="/signup">Register</a>
       </div>
     </div>
   </div>

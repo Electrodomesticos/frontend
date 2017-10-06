@@ -28,31 +28,45 @@ const routes: Routes = [
 
 {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [LoggedInGuard]
+    
 },
 {
     path: 'user',
-    component: UserComponent
+    component: UserComponent,    
+    canActivate: [LoggedInGuard]
+    
 },
 {
     path: 'table',
-    component: TableComponent
+    component: TableComponent,
+    canActivate: [LoggedInGuard]
+    
 },
 {
     path: 'typography',
-    component: TypographyComponent
+    component: TypographyComponent,
+    canActivate: [LoggedInGuard]
+    
 },
 {
     path: 'icons',
-    component: IconsComponent
+    component: IconsComponent,
+    canActivate: [LoggedInGuard]
+    
 },
 {
     path: 'maps',
-    component: MapsComponent
+    component: MapsComponent,
+    canActivate: [LoggedInGuard]
+    
 },
 {
     path: 'notifications',
-    component: NotificationsComponent
+    component: NotificationsComponent,
+    canActivate: [LoggedInGuard]
+    
 },
 {
     path: 'upgrade',
@@ -60,11 +74,15 @@ const routes: Routes = [
 },
 {
     path: 'rooms',
-    component: RoomsComponent
+    component: RoomsComponent,
+    canActivate: [LoggedInGuard]
+    
 },
 {
     path: 'appliances',
-    component: HouseholdAppliancesComponent
+    component: HouseholdAppliancesComponent,
+    canActivate: [LoggedInGuard]
+    
 }
 ] 
 

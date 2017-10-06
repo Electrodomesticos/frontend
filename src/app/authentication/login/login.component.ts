@@ -28,6 +28,16 @@ export class LoginComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
+
+    if (this.authService.isLoggedIn()) {
+      this.router.navigateByUrl('/dashboard');
+    }
+  }
+
+  hide (){
+
+
+
   }
 
   submit(value: any) {
@@ -36,7 +46,8 @@ export class LoginComponent implements OnInit {
     if (!this.loginForm.valid) { return; }
 
     this.authService.logIn(value.email, value.password).subscribe(
-      this.authService.redirectAfterLogin.bind(this.authService),
+      
+        this.authService.redirectAfterLogin.bind(this.authService),
       this.afterFailedLogin.bind(this)
     );
     // this.submitted = true;
