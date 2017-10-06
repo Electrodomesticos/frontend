@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService }  from './authentication/auth.service'
 
 import { Angular2TokenService } from 'angular2-token';
 
@@ -11,8 +12,21 @@ export class AppComponent {
   title = 'app works!';
 
 
-  constructor(private _tokenService: Angular2TokenService) {
-    this._tokenService.init();
-  }
+  constructor(private _tokenService: Angular2TokenService,
+    private authService: AuthService
+              )
 
+              {
+    this._tokenService.init({ apiPath : "http://192.168.99.102:3000"});
+  }
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
+  getStyle() {
+    if(!this.isLoggedIn()) {
+      return "100%";
+    } else {
+      return "";
+    }
+  }
 }
