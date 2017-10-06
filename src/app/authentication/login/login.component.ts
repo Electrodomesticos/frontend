@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
 
     this.authService.logIn(value.email, value.password).subscribe(
       res => {
-        debugger;
+    
         if(res.status == 200){
           this.router.navigate(['/dashboard']);
           this.authService.redirectAfterLogin.bind(this.authService),
