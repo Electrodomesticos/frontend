@@ -11,6 +11,7 @@ export class OutletsService {
   private urlget : string = "http://192.168.99.102:3000/rooms/";
   private urlpost : string = "http://192.168.99.102:3000/outlets";
   private urlgetA : string = "http://192.168.99.102:3000/household_appliances";
+
   
     headers: Headers;
     options: RequestOptions;

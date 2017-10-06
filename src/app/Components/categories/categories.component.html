@@ -1,0 +1,119 @@
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Categorias</h4>
+                    <p class="category">Lista de Categorias disponibles</p>
+                    <button type="button" class="btn btn-default btn-circle" *ngIf="categories">{{ categories.length }}</button>
+                    <button type="button" class="btn btn-sm btn-primary btn-create" (click)="modal.open()"> Crear
+                        </button>
+                </div>
+                <div class="content table-responsive table-full-width">
+                    <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Nombre
+                            </th>
+                            <th>
+                                    Electrodomestico
+                                  </th>
+                                  <th>
+                                        Editar
+                                      </th> 
+                                    <th>
+                                      Eliminar
+                                    </th>     
+                                             
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let categorie of categories" [class.selected]="categorie === selectedCategorie">
+                              <td>
+                                {{categorie.name}}
+                              </td>
+                              
+                                  <td>
+                                        <div class="options">
+                                            <a class="ti-settings" (click)="guardarDatos(categorie)" (click)="updateModal.open(categorie)"></a>
+                                        </div>
+                                        
+                                    </td>  
+                                    <td> 
+                                      <div class="options">
+                                          <a class="ti-trash" (click)="deleteCategorie(categorie)"></a>
+                                      </div>
+                                    </td>                          
+                                       
+                            </tr>
+                        </tbody>
+                    </table>
+  
+                </div>
+            </div>
+        </div>    
+    </div>
+  </div>
+  
+
+   
+  
+ <bs-modal #modal>
+        <form (ngSubmit)="createCategorie(categorie)" #postForm="ngForm">
+          <bs-modal-header [showDismiss]="true">
+              <h4 class="modal-title"> Ingrese la información de la Categoría</h4>
+          </bs-modal-header>
+          <bs-modal-body>
+             <div class="form-group">
+                 <label for="name">
+                   Nombre
+                 </label>
+                 <input required id="name" type="text" class="form-control" placeholder="Ingrese el nombre aqui" #name='ngModel' [(ngModel)]="categorie.name" name='name'>
+               </div>
+       
+          </bs-modal-body>
+          <bs-modal-footer>
+             <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">
+                 Cancelar
+               </button>
+               <button type="submit" class="btn btn-primary" id="setPosition" (click)="loadCategories()" (click)="modal.close()">
+                 Guardar
+               </button>
+          </bs-modal-footer>
+        </form>
+      </bs-modal>
+
+      
+ <bs-modal #updateModal>
+        <form (ngSubmit)="updateCategorie(categorie)" #postForm="ngForm">
+          <bs-modal-header [showDismiss]="true">
+            <h4 class="modal-title">
+                Ingrese la información de la Habitación
+            </h4>
+          </bs-modal-header>
+          <bs-modal-body>
+              <div class="form-group">
+                  <label for="name">
+                    Nombre
+                  </label>
+                  <input required id="name" type="text" class="form-control" value={{tempData.name}} #name='ngModel' [(ngModel)]="categorie.name" name='name'>
+                </div>
+        
+               
+          </bs-modal-body>
+          <bs-modal-footer>
+              <button type="button" class="btn btn-default" data-dismiss="modal" (click)="updateModal.dismiss()">
+                  Cancelar
+                </button>
+                <button type="submit" class="btn btn-primary" id="setPosition" (click)="loadAppliances()" (click)="updateModal.close()">
+                  Guardar
+                </button>
+          </bs-modal-footer>
+        </form>
+     </bs-modal>
+    
+    
+    
+    
