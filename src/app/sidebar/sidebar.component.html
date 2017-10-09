@@ -4,8 +4,9 @@
         <a class="simple-text" style="width:100%
         ">Electrodomesticos
         <span class="ti-light-bulb"></span>
-        
-                </a>
+        </a>
+ 
+        <circle-comp  *ngIf="isLoggedIn()"></circle-comp>
     </div>
     <ul class="nav">
             <li *ngIf="isNotMobileMenu()">

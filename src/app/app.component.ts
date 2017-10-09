@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService }  from './authentication/auth.service'
 
 import { Angular2TokenService } from 'angular2-token';
@@ -8,7 +8,7 @@ import { Angular2TokenService } from 'angular2-token';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app works!';
 
 
@@ -19,6 +19,11 @@ export class AppComponent {
               {
     this._tokenService.init({ apiPath : "http://192.168.99.102:3000"});
   }
+
+  ngOnInit() {
+    console.log(this.isLoggedIn());
+   }
+
   isLoggedIn(): boolean {
     return this.authService.isLoggedIn();
   }
@@ -29,4 +34,10 @@ export class AppComponent {
       return "";
     }
   }
+
+  onResize(event) {
+    console.log(event.target.innerWidth);
+    alert("dfsd")
+   }
+
 }

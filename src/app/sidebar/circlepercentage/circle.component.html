@@ -1,0 +1,23 @@
+
+        <figure class="chart-three animate">
+            <svg role="img" xmlns="http://www.w3.org/2000/svg">
+                <title>[title here]</title>
+                <desc>[long description here]</desc>
+                <circle class="circle-background"/>
+                <circle class="circle-foreground"/>
+            </svg>
+            <figcaption>75% of all males like donuts.</figcaption>
+        </figure>
+
+        <script>
+            var canvas = document.getElementById("demoCanvas");  
+            if (canvas.getContext)   
+            {  
+            var ctx = canvas.getContext("2d");         
+            var gradient = ctx.createLinearGradient(10, 90, 200, 90);
+            gradient.addColorStop(0, 'black');
+            gradient.addColorStop(1, 'white');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(10, 10, 200, 250);             
+            }
+            </script>

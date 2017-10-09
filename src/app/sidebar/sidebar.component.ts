@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService }  from '../authentication/auth.service'
 
 declare var $:any;
 
@@ -27,12 +28,18 @@ export const ROUTES: RouteInfo[] = [
     moduleId: module.id,
     selector: 'sidebar-cmp',
     templateUrl: 'sidebar.component.html',
+    styleUrls: ['./sidebar.component.css']
 })
+
+
 
 export class SidebarComponent implements OnInit {
     public menuItems: any[];
+
+    constructor(private _authService : AuthService){}
     ngOnInit() {
         this.menuItems = ROUTES.filter(menuItem => menuItem);
+      
     }
     isNotMobileMenu(){
         if($(window).width() > 991){
@@ -40,5 +47,10 @@ export class SidebarComponent implements OnInit {
         }
         return true;
     }
+
+    isLoggedIn(): boolean {
+        return this._authService.isLoggedIn();
+      }
+    
 
 }
