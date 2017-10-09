@@ -17,6 +17,7 @@ import { MapsComponent }   from './maps/maps.component';
 import { NotificationsComponent }   from './notifications/notifications.component';
 import { UpgradeComponent }   from './upgrade/upgrade.component';
 import { RoomsComponent }   from './Components/rooms/rooms.component';
+import { CategoriesComponent }   from './Components/categories/categories.component';
 import { HouseholdAppliancesComponent }   from './Components/household-appliances/household-appliances.component';
 
 const routes: Routes = [
@@ -78,6 +79,12 @@ const routes: Routes = [
     canActivate: [LoggedInGuard]
     
 },
+//{
+//    path: 'categories',
+//    component: CategoriesComponent,
+//    canActivate: [LoggedInGuard]
+    
+//S},
 {
     path: 'appliances',
     component: HouseholdAppliancesComponent,
