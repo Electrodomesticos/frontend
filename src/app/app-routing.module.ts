@@ -19,6 +19,9 @@ import { UpgradeComponent }   from './upgrade/upgrade.component';
 import { RoomsComponent }   from './Components/rooms/rooms.component';
 import { HouseholdAppliancesComponent }   from './Components/household-appliances/household-appliances.component';
 
+import { ChartComponent }   from './dashboard/chart.component';
+
+
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', redirectTo: '/log-in' },
@@ -29,7 +32,7 @@ const routes: Routes = [
 {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [LoggedInGuard]
+//    canActivate: [LoggedInGuard]
     
 },
 {
@@ -82,6 +85,12 @@ const routes: Routes = [
     path: 'appliances',
     component: HouseholdAppliancesComponent,
     canActivate: [LoggedInGuard]
+    
+},
+{
+    path: 'chart',
+    component: ChartComponent
+   
     
 }
 ] 
