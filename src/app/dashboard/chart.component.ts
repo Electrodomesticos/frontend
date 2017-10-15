@@ -62,7 +62,7 @@ export class ChartComponent {
               theme : 'dark-unica',
               type: 'line',
               renderTo: this.chartEl.nativeElement,
-              backgroundColor: 'black'
+              backgroundColor: '#212120'
           }
 
         
