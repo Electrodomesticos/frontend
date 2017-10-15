@@ -26,6 +26,7 @@ import { NguiMapModule} from '@ngui/map';
 
 import { ChartModule } from 'angular2-highcharts';
 import { ChartComponent }   from './dashboard/chart.component';
+import { ChartService }   from './dashboard/chart.service';
 
 
 import { DashboardComponent }   from './dashboard/dashboard.component';
@@ -95,7 +96,8 @@ export function highchartsFactory() {
     HouseholdAppliancesService,
     { provide: HighchartsStatic, 
       useFactory: highchartsFactory
-    }
+    },
+    ChartService
   ],
   bootstrap: [AppComponent]
 })
