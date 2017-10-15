@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { Ng2OdometerModule } from 'ng2-odometer'; // <-- import the module
 
 
 import { AppComponent } from './app.component';
@@ -27,6 +28,7 @@ import { NguiMapModule} from '@ngui/map';
 import { ChartModule } from 'angular2-highcharts';
 import { ChartComponent }   from './dashboard/chart.component';
 import { ChartService }   from './dashboard/chart.service';
+import { OdometerComponent }   from './dashboard/odometer.component';
 
 
 import { DashboardComponent }   from './dashboard/dashboard.component';
@@ -49,6 +51,10 @@ import { HouseholdAppliancesService } from './Services/household_appliances/hous
 import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
 import * as highcharts from 'highcharts';
 
+
+
+
+
 export function highchartsFactory() {
   return highcharts;
 }
@@ -68,7 +74,8 @@ export function highchartsFactory() {
     OutletsComponent,
     HouseholdAppliancesComponent,
  //   CategoriesComponent,
-    ChartComponent
+    ChartComponent,
+    OdometerComponent
 
   ],
   imports: [
@@ -86,7 +93,8 @@ export function highchartsFactory() {
     HttpModule,
     BsModalModule,
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyBr-tgUtpm8cyjYVQDrjs8YpZH7zBNWPuY'}),
-    ChartModule
+    ChartModule,
+    Ng2OdometerModule.forRoot()
 
   ],
   providers: [
