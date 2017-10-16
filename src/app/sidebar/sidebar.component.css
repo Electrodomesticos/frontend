@@ -1,7 +1,7 @@
 body {
-    background-color: #222222;
-    background: -webkit-repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;
-    background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;
+    color-color: #222222;
+    color: -webkit-repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;
+    color: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;
   }
   
   #container {
@@ -211,3 +211,56 @@ body {
       font-size: 3.5em;
     }
   }
+
+  
+
+.ti-light-bulb:before {
+      animation: colorchange 0s ease infinite;
+      -webkit-animation: colorchange 0s ease infinite; 
+    }
+
+   
+    @keyframes colorchange
+    {
+      0%   {color: white;}
+  
+      100%  {color: yellow;}
+   
+    }
+
+    @-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */
+    {
+      0%   {color: white;}
+  
+      100%  {color: yellow;}
+
+    }
+
+
+.nav li.active > a {
+    background-color: #ff0101;
+    color : white;
+     transition: all .2s ease-in-out; 
+     transform: scale(1.1);
+}
+
+.nav li.active > a > i{
+   
+    color : white;
+    /*animation: rotation 10s ease infinite;*/
+     transition: all .2s ease-in-out; 
+     transform: scale(1.4);
+
+}
+
+   
+/*@keyframes rotation
+    {
+    0% {-webkit-transform: rotate(0deg);}
+    50%   {-webkit-transform: rotate(-20deg);}
+    100%   {-webkit-transform: rotate(20deg);}
+ 
+   
+    }
+
+  */

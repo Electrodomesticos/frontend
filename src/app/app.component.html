@@ -21,7 +21,7 @@
 <router-outlet></router-outlet> -->
 
 <div class="wrapper">
-  <div class="sidebar" data-background-color="black" data-active-color="danger">
+  <div class="sidebar" data-background-color="black" data-active-color="danger" style="overflow:hidden;">
       <sidebar-cmp ></sidebar-cmp>
   </div>
   <div class="main-panel" [style.width]="getStyle()" style="transition: width 2s;"  (document:resize)="onResize($event)">
