@@ -73,7 +73,7 @@ export function highchartsFactory() {
     RoomsComponent,
     OutletsComponent,
     HouseholdAppliancesComponent,
- //   CategoriesComponent,
+ ////   CategoriesComponent,
     ChartComponent,
     OdometerComponent
 

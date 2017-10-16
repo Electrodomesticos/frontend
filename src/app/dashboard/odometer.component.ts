@@ -18,7 +18,7 @@ export class OdometerComponent {
        // setTimeout(() => this.number += this.number, 200); // Update on 5 seconds
 
     
-      // setTimeout(this.test(), 2000);
+      //// setTimeout(this.test(), 2000);
        setInterval(() => {this.number += Math.random(); this.observer.next(true)}, 2000);
      
        
