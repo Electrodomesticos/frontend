@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { Ng2OdometerModule } from 'ng2-odometer'; // <-- import the module
 
 
 import { AppComponent } from './app.component';
@@ -23,6 +24,13 @@ import { NavbarModule} from './shared/navbar/navbar.module';
 import { FixedPluginModule} from './shared/fixedplugin/fixedplugin.module';
 import { NguiMapModule} from '@ngui/map';
 
+
+import { ChartModule } from 'angular2-highcharts';
+import { ChartComponent }   from './dashboard/chart.component';
+import { ChartService }   from './dashboard/chart.service';
+import { OdometerComponent }   from './dashboard/odometer.component';
+
+
 import { DashboardComponent }   from './dashboard/dashboard.component';
 import { UserComponent }   from './user/user.component';
 import { TableComponent }   from './table/table.component';
@@ -38,17 +46,18 @@ import { HouseholdAppliancesComponent } from './Components/household-appliances/
 import { RoomsService } from './Services/rooms/rooms.service';
 import { OutletsService } from './Services/outlets/outlets.service';
 import { HouseholdAppliancesService } from './Services/household_appliances/household-appliances.service';
-import { CategoriesComponent } from './components/categories/categories.component';
+//import { CategoriesComponent } from './components/categories/categories.component';
+
+import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
+import * as highcharts from 'highcharts';
 
 
 
 
 
-
-
-
-
-
+export function highchartsFactory() {
+  return highcharts;
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +73,9 @@ import { CategoriesComponent } from './components/categories/categories.componen
     RoomsComponent,
     OutletsComponent,
     HouseholdAppliancesComponent,
-    CategoriesComponent
+ ////   CategoriesComponent,
+    ChartComponent,
+    OdometerComponent
 
   ],
   imports: [
@@ -81,14 +92,20 @@ import { CategoriesComponent } from './components/categories/categories.componen
     FixedPluginModule,
     HttpModule,
     BsModalModule,
-    NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyBr-tgUtpm8cyjYVQDrjs8YpZH7zBNWPuY'})
+    NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyBr-tgUtpm8cyjYVQDrjs8YpZH7zBNWPuY'}),
+    ChartModule,
+    Ng2OdometerModule.forRoot()
 
   ],
   providers: [
     Angular2TokenService,
     RoomsService,
     OutletsService,
-    HouseholdAppliancesService
+    HouseholdAppliancesService,
+    { provide: HighchartsStatic, 
+      useFactory: highchartsFactory
+    },
+    ChartService
   ],
   bootstrap: [AppComponent]
 })
