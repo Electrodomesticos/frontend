@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { LoggedInGuard } from './authentication/logged-in-guard.service';
-import { LoginComponent }          from './authentication/login/login.component';
-import { SignUpComponent }         from './authentication/sign-up/sign-up.component';
+import { UserService } from './ladp/user.service';
+import { LoginComponent }          from './ladp/login.component';
+//import { SignUpComponent }         from './ladp/sign-up.component';
 
 
 ///
@@ -23,11 +23,12 @@ import { ChartComponent }   from './dashboard/chart.component';
 
 
 const routes: Routes = [
+    
   { path: '', component: LoginComponent },
   { path: 'login', redirectTo: '/log-in' },
   { path: 'log-in', component: LoginComponent },
-  { path: 'sign-up', component: SignUpComponent },
-  { path: 'signup', redirectTo: '/sign-up' },
+//   { path: 'sign-up', component: SignUpComponent },
+//   { path: 'signup', redirectTo: '/sign-up' },
 
 {
     path: 'dashboard',
@@ -38,37 +39,36 @@ const routes: Routes = [
 {
     path: 'user',
     component: UserComponent,    
-    canActivate: [LoggedInGuard]
+ 
     
 },
 {
     path: 'table',
     component: TableComponent,
-    canActivate: [LoggedInGuard]
+   
     
 },
 {
     path: 'typography',
     component: TypographyComponent,
-    canActivate: [LoggedInGuard]
+  
     
 },
 {
     path: 'icons',
     component: IconsComponent,
-    canActivate: [LoggedInGuard]
+ 
     
 },
 {
     path: 'maps',
     component: MapsComponent,
-    canActivate: [LoggedInGuard]
     
 },
 {
     path: 'notifications',
     component: NotificationsComponent,
-    canActivate: [LoggedInGuard]
+ 
     
 },
 {
@@ -78,13 +78,13 @@ const routes: Routes = [
 {
     path: 'rooms',
     component: RoomsComponent,
-    canActivate: [LoggedInGuard]
+
     
 },
 {
     path: 'appliances',
     component: HouseholdAppliancesComponent,
-    canActivate: [LoggedInGuard]
+
     
 },
 {

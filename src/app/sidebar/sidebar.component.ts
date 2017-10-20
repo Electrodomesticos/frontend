@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService }  from '../authentication/auth.service'
+import { UserService }  from '../ladp/user.service'
 
 declare var $:any;
 
@@ -35,7 +35,7 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
     public menuItems: any[];
 
-    constructor(private _authService : AuthService){}
+    constructor(private service : UserService){}
     ngOnInit() {
         this.menuItems = ROUTES.filter(menuItem => menuItem);
       
@@ -48,7 +48,7 @@ export class SidebarComponent implements OnInit {
     }
 
     isLoggedIn(): boolean {
-        return this._authService.isLoggedIn();
+        return this.service.isLoggedIn();
       }
     
 
