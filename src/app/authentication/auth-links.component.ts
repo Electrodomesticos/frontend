@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { AuthService } from './auth.service';
+import { UserService } from '../ladp/user.service';
 
 @Component({
   selector: 'app-auth-links',
@@ -20,7 +20,7 @@ import { AuthService } from './auth.service';
   `
 })
 export class AuthLinksComponent {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: UserService) {}
 
   isLoggedIn(): boolean {
     return this.authService.isLoggedIn();

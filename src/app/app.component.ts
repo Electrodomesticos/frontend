@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService }  from './authentication/auth.service'
+import { UserService }  from './ladp/user.service'
 
 import { Angular2TokenService } from 'angular2-token';
 
@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
 
 
   constructor(private _tokenService: Angular2TokenService,
-    private authService: AuthService
+    private authService: UserService
               )
 
               {

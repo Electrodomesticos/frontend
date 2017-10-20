@@ -48,7 +48,9 @@ export class SidebarComponent implements OnInit {
     }
 
     isLoggedIn(): boolean {
-        return this.service.isLoggedIn();
+        console.log("sidebar", this.service.isLoggedIn())
+        return this.service.isLoggedIn()
+        //return false
       }
     
 
