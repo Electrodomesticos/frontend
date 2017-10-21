@@ -57,6 +57,8 @@ import { UserService } from './ladp/user.service';
 import { LoginComponent }          from './ladp/login.component';
 
 
+import { LoggedInGuard } from './ladp/logged-in-guard.service'
+
 
 export function highchartsFactory() {
   return highcharts;
@@ -111,7 +113,8 @@ export function highchartsFactory() {
     { provide: HighchartsStatic, 
       useFactory: highchartsFactory
     },
-    ChartService
+    ChartService,
+    LoggedInGuard
   ],
   bootstrap: [AppComponent]
 })

@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { UserService } from './ladp/user.service';
 import { LoginComponent }          from './ladp/login.component';
+import { LoggedInGuard } from './ladp/logged-in-guard.service'
+
 //import { SignUpComponent }         from './ladp/sign-up.component';
 
 
@@ -21,7 +23,6 @@ import { HouseholdAppliancesComponent }   from './Components/household-appliance
 
 import { ChartComponent }   from './dashboard/chart.component';
 
-
 const routes: Routes = [
     
   { path: '', component: LoginComponent },
@@ -33,63 +34,65 @@ const routes: Routes = [
 {
     path: 'dashboard',
     component: DashboardComponent,
-//    canActivate: [LoggedInGuard]
+    canActivate: [LoggedInGuard]
     
 },
 {
     path: 'user',
     component: UserComponent,    
- 
+    canActivate: [LoggedInGuard]
     
 },
 {
     path: 'table',
     component: TableComponent,
-   
+    canActivate: [LoggedInGuard]
     
 },
 {
     path: 'typography',
     component: TypographyComponent,
-  
+    canActivate: [LoggedInGuard]
     
 },
 {
     path: 'icons',
     component: IconsComponent,
- 
+    canActivate: [LoggedInGuard]
     
 },
 {
     path: 'maps',
     component: MapsComponent,
-    
+    canActivate: [LoggedInGuard]
 },
 {
     path: 'notifications',
     component: NotificationsComponent,
- 
+    canActivate: [LoggedInGuard]
     
 },
 {
     path: 'upgrade',
-    component: UpgradeComponent
+    component: UpgradeComponent,
+    canActivate: [LoggedInGuard]
 },
 {
     path: 'rooms',
     component: RoomsComponent,
-
+    canActivate: [LoggedInGuard]
     
 },
 {
     path: 'appliances',
     component: HouseholdAppliancesComponent,
-
+    canActivate: [LoggedInGuard]
     
 },
 {
     path: 'chart',
-    component: ChartComponent
+    component: ChartComponent,
+    canActivate: [LoggedInGuard]
    
     
 }

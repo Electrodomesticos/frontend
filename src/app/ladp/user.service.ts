@@ -5,6 +5,7 @@ import { Observable }           from 'rxjs/Observable';
 @Injectable()
 export class UserService {
   private loggedIn = false;
+  redirectUrl: string;
 
   constructor(private http: Http) {
     this.loggedIn = !!localStorage.getItem('auth_token');

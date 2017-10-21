@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 
 import { UserService } from '../ladp/user.service';
 
+import {
+  Router
+}                           from '@angular/router';
+
 @Component({
   selector: 'app-auth-links',
   template: `
@@ -20,7 +24,7 @@ import { UserService } from '../ladp/user.service';
   `
 })
 export class AuthLinksComponent {
-  constructor(private authService: UserService) {}
+  constructor(private authService: UserService, private router : Router) {}
 
   isLoggedIn(): boolean {
     return this.authService.isLoggedIn();
@@ -31,6 +35,8 @@ export class AuthLinksComponent {
   }
 
   logOut(): void {
+    
     this.authService.logOut();
+    this.router.navigate(['/']);
   }
 }
