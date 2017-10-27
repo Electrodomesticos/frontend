@@ -84,12 +84,12 @@ const routes: Routes = [
     canActivate: [LoggedInGuard]
     
 },
-//{
-//    path: 'categories',
-//    component: CategoriesComponent,
-//    canActivate: [LoggedInGuard]
+{
+    path: 'categories',
+    component: CategoriesComponent,
+    canActivate: [LoggedInGuard]
     
-//S},
+},
 {
     path: 'appliances',
     component: HouseholdAppliancesComponent,
