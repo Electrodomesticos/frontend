@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { LoggedInGuard } from './authentication/logged-in-guard.service';
-import { LoginComponent }          from './authentication/login/login.component';
-import { SignUpComponent }         from './authentication/sign-up/sign-up.component';
+import { UserService } from './ladp/user.service';
+import { LoginComponent }          from './ladp/login.component';
+import { LoggedInGuard } from './ladp/logged-in-guard.service'
+
+//import { SignUpComponent }         from './ladp/sign-up.component';
 
 
 ///
@@ -22,18 +24,18 @@ import { HouseholdAppliancesComponent }   from './Components/household-appliance
 
 import { ChartComponent }   from './dashboard/chart.component';
 
-
 const routes: Routes = [
+    
   { path: '', component: LoginComponent },
   { path: 'login', redirectTo: '/log-in' },
   { path: 'log-in', component: LoginComponent },
-  { path: 'sign-up', component: SignUpComponent },
-  { path: 'signup', redirectTo: '/sign-up' },
+//   { path: 'sign-up', component: SignUpComponent },
+//   { path: 'signup', redirectTo: '/sign-up' },
 
 {
     path: 'dashboard',
     component: DashboardComponent,
-//    canActivate: [LoggedInGuard]
+    canActivate: [LoggedInGuard]
     
 },
 {
@@ -64,7 +66,6 @@ const routes: Routes = [
     path: 'maps',
     component: MapsComponent,
     canActivate: [LoggedInGuard]
-    
 },
 {
     path: 'notifications',
@@ -74,7 +75,8 @@ const routes: Routes = [
 },
 {
     path: 'upgrade',
-    component: UpgradeComponent
+    component: UpgradeComponent,
+    canActivate: [LoggedInGuard]
 },
 {
     path: 'rooms',
@@ -96,7 +98,8 @@ const routes: Routes = [
 },
 {
     path: 'chart',
-    component: ChartComponent
+    component: ChartComponent,
+    canActivate: [LoggedInGuard]
    
     
 }

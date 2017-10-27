@@ -14,6 +14,8 @@ import { BsModalModule } from 'ng2-bs3-modal';
 import { Angular2TokenService } from 'angular2-token';
 import { SharedModule }         from './shared/shared.module';
 import { AuthenticationModule } from './authentication/authentication.module';
+import { AuthenticationModule2 } from './ladp/authentication.module';
+
 import { AuthLinksComponent } from './authentication/auth-links.component';
 
 
@@ -51,8 +53,11 @@ import { HouseholdAppliancesService } from './Services/household_appliances/hous
 import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
 import * as highcharts from 'highcharts';
 
+import { UserService } from './ladp/user.service';
+import { LoginComponent }          from './ladp/login.component';
 
 
+import { LoggedInGuard } from './ladp/logged-in-guard.service'
 
 
 export function highchartsFactory() {
@@ -76,6 +81,7 @@ export function highchartsFactory() {
  ////   CategoriesComponent,
     ChartComponent,
     OdometerComponent
+    //,LoginComponent
 
   ],
   imports: [
@@ -94,10 +100,12 @@ export function highchartsFactory() {
     BsModalModule,
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyBr-tgUtpm8cyjYVQDrjs8YpZH7zBNWPuY'}),
     ChartModule,
-    Ng2OdometerModule.forRoot()
+    Ng2OdometerModule.forRoot(),
+    AuthenticationModule2
 
   ],
   providers: [
+    UserService,
     Angular2TokenService,
     RoomsService,
     OutletsService,
@@ -105,7 +113,8 @@ export function highchartsFactory() {
     { provide: HighchartsStatic, 
       useFactory: highchartsFactory
     },
-    ChartService
+    ChartService,
+    LoggedInGuard
   ],
   bootstrap: [AppComponent]
 })
