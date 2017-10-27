@@ -243,6 +243,7 @@ body {
      transition: all .2s ease-in-out; 
      transform: scale(1.1);
      transition: background-color 1.5s;
+     animation : tilt 5s ease-in-out infinite;
      
 }
 
@@ -266,3 +267,10 @@ body {
     }
 
   */
+
+ @keyframes tilt {
+    0% {background-color: #ff0101;}
+    50%   {background-color: #901A1A;}
+    100% {background-color: #ff0101;}
+
+  } 

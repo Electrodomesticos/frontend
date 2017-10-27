@@ -46,6 +46,8 @@
   stroke-width: 25px;
 }
 .chart-three svg .circle-foreground {
+
+  
   
   stroke: #49fb35;
   stroke-dasharray: 494.55px 549.5px;
@@ -55,6 +57,11 @@
           transform-origin: 50% 50%;
   -webkit-transform: rotate(-90deg);
           transform: rotate(-90deg);
+
+          transition: stroke 1s ease-in-out;
+
+          
+          
 }
 .chart-three figcaption {
   display: inline-block;
