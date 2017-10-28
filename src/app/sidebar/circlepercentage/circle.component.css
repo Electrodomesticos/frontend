@@ -28,8 +28,8 @@
           animation-delay: 1s;
 }
 .chart-three.animate figcaption:after {
-  -webkit-animation: chart-three-label 3s steps(90) forwards;
-          animation: chart-three-label 3s steps(90) forwards;
+  -webkit-animation: chart-three-label 3s steps(50) forwards;
+          animation: chart-three-label 3s steps(50) forwards;
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
 }

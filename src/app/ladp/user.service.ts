@@ -38,6 +38,6 @@ export class UserService {
   }
 
   isLoggedIn() {
-    return true;
+    return this.loggedIn;
   }
 }
