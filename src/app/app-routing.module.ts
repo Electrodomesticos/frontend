@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { UserService } from './ladp/user.service';
 import { LoginComponent }          from './ladp/login.component';
+import { SignUpComponent }          from './ladp/sign-up/sign-up.component';
 import { LoggedInGuard } from './ladp/logged-in-guard.service'
 
 //import { SignUpComponent }         from './ladp/sign-up.component';
@@ -29,8 +30,8 @@ const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', redirectTo: '/log-in' },
   { path: 'log-in', component: LoginComponent },
-//   { path: 'sign-up', component: SignUpComponent },
-//   { path: 'signup', redirectTo: '/sign-up' },
+  { path: 'sign-up', component: SignUpComponent },
+  { path: 'signup', redirectTo: '/sign-up' },
 
 {
     path: 'dashboard',

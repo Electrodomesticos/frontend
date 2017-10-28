@@ -50,6 +50,7 @@ import { OutletsService } from './Services/outlets/outlets.service';
 import { HouseholdAppliancesService } from './Services/household_appliances/household-appliances.service';
 import { CategoriesComponent } from './Components/categories/categories.component';
 import { CategoriesService } from './Services/categories/categories.service';
+import { SignUpService } from './Services/sign-up/sign-up.service';
 
 
 import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
@@ -110,6 +111,7 @@ export function highchartsFactory() {
     UserService,
     Angular2TokenService,
     RoomsService,
+    SignUpService,
     OutletsService,
     CategoriesService,
     HouseholdAppliancesService,

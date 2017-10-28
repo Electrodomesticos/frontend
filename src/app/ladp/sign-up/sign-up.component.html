@@ -1,0 +1,59 @@
+<form (ngSubmit)="createUser(user)" #postForm="ngForm">
+  
+  
+     <div class="form-group">
+         <label for="user_name">
+           Nombre de Usuario
+         </label>
+         <input required id="user_name" type="text" class="form-control" placeholder="Ingrese el nombre de usuario aqui" #user_name='ngModel' [(ngModel)]="user.user_name" name='user_name'>
+       </div>
+
+
+     <div class="form-group">
+      <label for="email">
+        Email
+      </label>
+      <input required id="email" type="text" class="form-control" placeholder="Ingrese el email aqui" #email='ngModel' [(ngModel)]="user.email" name='email'>
+    </div>
+
+    <div class="form-group">
+      <label for="first_name">
+        Nombre
+      </label>
+      <input required id="first_name" type="text" class="form-control" placeholder="Ingrese el nombre aqui" #first_name='ngModel' [(ngModel)]="user.first_name" name='first_name'>
+    </div>
+
+
+    <div class="form-group">
+      <label for="last_name">
+        Apellido
+      </label>
+      <input required id="last_name" type="text" class="form-control" placeholder="Ingrese el apellido aqui" #last_name='ngModel' [(ngModel)]="user.last_name" name='last_name'>
+    </div>
+
+       <div class="form-group">
+           <label for="telephone">
+               Telefono
+           </label>
+           <input required id="telephone" type="number" class="form-control" placeholder="Ingrese el telefono" #telephone='ngModel' [(ngModel)]="user.telephone" name='telephone'>
+       </div>
+
+     <div class="form-group">
+      <label for="address">
+        Dirección
+      </label>
+      <input required id="address" type="text" class="form-control" placeholder="Ingrese la dirección aqui" #address='ngModel' [(ngModel)]="user.address" name='address'>
+    </div>
+
+    <div class="form-group">
+      <label for="city">
+        Ciudad
+      </label>
+      <input required id="city" type="text" class="form-control" placeholder="Ingrese la ciudad aqui" #city='ngModel' [(ngModel)]="user.city" name='city'>
+    </div>
+  
+    <button type="submit" class="btn btn-primary pull-right">
+      Guardar
+    </button>
+  
+</form>
