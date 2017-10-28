@@ -7,8 +7,8 @@ import 'rxjs/Rx';
 @Injectable()
 export class SignUpService {
 
-  //private urlget : string = "http://192.168.99.103:3000/users";
-  private urlpost : string = "http://localhost:3000/users";
+  private urlpost : string = "http://192.168.99.102:3000/users";
+  //private urlpost : string = "http://localhost:3000/users";
   
     headers: Headers;
     options: RequestOptions;
