@@ -11,7 +11,7 @@ export class CategoriesComponent implements OnInit {
 	categories: Categorie[];
   	categorie = new Categorie;
   	tempData = new Categorie;
-  	selectedAppliance: Categorie;
+  	selectedCategorie: Categorie;
 
   constructor(private categoriesService: CategoriesService) { }
 

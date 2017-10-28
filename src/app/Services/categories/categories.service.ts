@@ -6,7 +6,7 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class CategoriesService {
-  private urlget : string = "http://192.168.99.102:3000/categories";
+  private urlget : string = "http://192.168.99.103:3000/categories";
   
     headers: Headers;
     options: RequestOptions;
