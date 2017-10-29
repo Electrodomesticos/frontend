@@ -6,6 +6,11 @@ import { Observable }           from 'rxjs/Observable';
 export class UserService {
   private loggedIn = false;
   redirectUrl: string;
+  public userId = "";
+  //private urlSearch = "http://192.168.99.102:3000/users/search/"; 
+  private urlSearch = "http://localhost:3000/users/search/"; 
+  private urlLdap = "http://192.168.99.102:3000/ldap";
+
 
   constructor(private http: Http) {
     this.loggedIn = !!localStorage.getItem('auth_token');
@@ -17,7 +22,7 @@ export class UserService {
 
     return this.http
       .post(
-        'http://192.168.99.102:3000/ldap', 
+        this.urlLdap, 
         JSON.stringify({ email, password }), 
         { headers }
       )
@@ -27,17 +32,34 @@ export class UserService {
           localStorage.setItem('auth_token', res.auth_token);
           this.loggedIn = true;
         }
-
+        
         return res.userValid;
       });
+  }
+
+
+  lookForUser(user){
+
+    return this.http.get(this.urlSearch+user).map((response ) =>{ 
+      localStorage.setItem('userId', response.json()[0].id)
+
+      });
+
   }
   
   logOut() {
     localStorage.removeItem('auth_token');
+    localStorage.removeItem('userId');
     this.loggedIn = false;
   }
 
   isLoggedIn() {
     return this.loggedIn;
   }
+
+  getUserId(){
+
+    return this.userId;
+  }
+
 }

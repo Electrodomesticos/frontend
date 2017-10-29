@@ -6,19 +6,22 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class HouseholdAppliancesService {
-  private urlget : string = "http://192.168.99.103:3000/household_appliances";
-  
+  private urlget : string = "http://192.168.99.102:3000/household_appliances";
+  private urlgetUser : string;
+
     headers: Headers;
     options: RequestOptions;
   
     constructor(private http: Http) {
       this.headers = new Headers({ 'Content-Type': 'application/json' });
       this.options = new RequestOptions({ headers: this.headers });
+
+      this.urlgetUser = "http://192.168.99.102:3000/users/"+localStorage.getItem('userId')+"/household_appliances";
     }
 
     getAppliances(): Observable<Household_appliance[]> {
       return this.http
-          .get(this.urlget)
+          .get(this.urlgetUser)
           .map((response: Response) => {
               return <Household_appliance[]>response.json();
           })

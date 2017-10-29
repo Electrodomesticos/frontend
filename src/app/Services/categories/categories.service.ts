@@ -6,19 +6,23 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class CategoriesService {
-  private urlget : string = "http://192.168.99.103:3000/categories";
-  
+  private urlget : string = "http://192.168.99.102:3000/categories";
+  private urlgetUser : string ;
+
     headers: Headers;
     options: RequestOptions;
   
     constructor(private http: Http) {
       this.headers = new Headers({ 'Content-Type': 'application/json' });
       this.options = new RequestOptions({ headers: this.headers });
+
+      this.urlgetUser = "http://192.168.99.102:3000/users/"+localStorage.getItem('userId')+"/categories";
+      
     }
 
     getCategories(): Observable<Categorie[]> {
       return this.http
-          .get(this.urlget)
+          .get(this.urlgetUser)
           .map((response: Response) => {
               return <Categorie[]>response.json();
           })

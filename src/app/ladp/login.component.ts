@@ -28,6 +28,7 @@ export class LoginComponent {
   
   submitted: boolean;
   loginForm: FormGroup;
+  userId = "";
 
   ngOnInit() {
     this.submitted = false;
@@ -73,14 +74,50 @@ export class LoginComponent {
             .subscribe(
                 data => {
                     if(data==true){
-                    this.router.navigateByUrl('dashboard');
+               
+                   this.getUserId(value.email)
+                       //this.router.navigateByUrl('dashboard/' + this.getUserId(value.email));
                     }
                     else{
                       alert("ERROR PASSWORD")
                     }
-                });
-                
+                }); 
+
     }
+
+
+    getUserId(userMail){
+      this.userService.lookForUser(userMail)
+      
+      // .subscribe(
+      //         res => {
+      //           // this.areas = resAreaData;
+      //             console.log('AREAS CARGADAS: ', res[0].id)
+      //             return res[0].id
+      //         }
+      //       );
+      .subscribe(  
+        res => {
+                        // this.areas = resAreaData;
+                      
+                      
+                
+                      },
+        error => console.log("Error: ", error),
+        () => this.router.navigate(['/dashboard'])
+
+          );
+    //   .subscribe(
+    //             res => {
+    //               // this.areas = resAreaData;
+    //                 console.log('AREAS CARGADAS: ', res[0].id)
+    //                 this.userId = res[0].id;
+    //                 return res[0].id
+    //             },
+    //             error =>{    this.router.navigateByUrl('dashboard')}
+    //           );
+
+     }
 
         
 }
