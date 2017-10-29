@@ -15,6 +15,8 @@ export class DashboardComponent implements OnInit{
     constructor(private userService : UserService){}
 
     ngOnInit(){
+
+
         var dataSales = {
           labels: ['9:00AM', '12:00AM', '3:00PM', '6:00PM', '9:00PM', '12:00PM', '3:00AM', '6:00AM'],
           series: [

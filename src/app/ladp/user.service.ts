@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { Observable }           from 'rxjs/Observable';
 
+
+
 @Injectable()
 export class UserService {
   private loggedIn = false;
   redirectUrl: string;
-  public userId = "";
+  private currentUser : any;
   //private urlSearch = "http://192.168.99.102:3000/users/search/"; 
   private urlSearch = "http://localhost:3000/users/search/"; 
   private urlLdap = "http://192.168.99.102:3000/ldap";
@@ -41,7 +43,7 @@ export class UserService {
   lookForUser(user){
 
     return this.http.get(this.urlSearch+user).map((response ) =>{ 
-      localStorage.setItem('userId', response.json()[0].id)
+      localStorage.setItem('userId', JSON.stringify(response.json()[0]))
 
       });
 
@@ -57,9 +59,9 @@ export class UserService {
     return this.loggedIn;
   }
 
-  getUserId(){
-
-    return this.userId;
+  getUser(){
+    this.currentUser = JSON.parse(localStorage.getItem('userId'));
+    return this.currentUser;
   }
 
 }

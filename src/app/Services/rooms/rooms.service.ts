@@ -2,7 +2,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Room } from '../../Models/room'
 import { Observable } from 'rxjs/Observable';
-
+import { UserService } from '../../ladp/user.service';
 import 'rxjs/Rx';
 
 @Injectable()
@@ -16,11 +16,11 @@ export class RoomsService {
   headers: Headers;
   options: RequestOptions;
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private userService: UserService) {
     this.headers = new Headers({ 'Content-Type': 'application/json' });
     this.options = new RequestOptions({ headers: this.headers });
 
-    this.urlgetUser = "http://192.168.99.102:3000/users/"+localStorage.getItem('userId')+"/rooms";
+    this.urlgetUser = "http://192.168.99.102:3000/users/"+this.userService.getUser()+"/rooms";
   }
   /*
   getRooms(): Observable<Room[]> {

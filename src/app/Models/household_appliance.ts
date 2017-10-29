@@ -4,7 +4,8 @@ export class Household_appliance {
       public name?: string,
       public electricity_use?: number,
       public categorie_name?: string,
-  	  public outlet_id?: number
+      public outlet_id?: number,
+      public user? : any
     ) { }
   
   }

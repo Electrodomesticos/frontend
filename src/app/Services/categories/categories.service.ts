@@ -3,20 +3,24 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Categorie } from '../../Models/categorie';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
+import { UserService } from '../../ladp/user.service';
+
 
 @Injectable()
 export class CategoriesService {
   private urlget : string = "http://192.168.99.102:3000/categories";
   private urlgetUser : string ;
 
+  private currentUser : any;
+
     headers: Headers;
     options: RequestOptions;
   
-    constructor(private http: Http) {
+    constructor(private http: Http, private userService: UserService) {
       this.headers = new Headers({ 'Content-Type': 'application/json' });
       this.options = new RequestOptions({ headers: this.headers });
 
-      this.urlgetUser = "http://192.168.99.102:3000/users/"+localStorage.getItem('userId')+"/categories";
+      this.urlgetUser = "http://192.168.99.102:3000/users/"+this.userService.getUser().id+"/categories";
       
     }
 
@@ -30,6 +34,7 @@ export class CategoriesService {
   }
   
   setCategorie(categorie: Categorie): Observable<Categorie> {
+    categorie.user = this.userService.getUser();
     return this.http.post(this.urlget, JSON.stringify(categorie), this.options).map(response => response.json())
   }
   

@@ -43,7 +43,7 @@ createCategorie(categorie: Categorie) {
   
 }
 
-deleteAppliance(categorie) {
+deleteCategorie(categorie) {
   this.categoriesService.deleteCategorie(categorie.id)
   .subscribe(
     data => {'espacio para un alert'},
