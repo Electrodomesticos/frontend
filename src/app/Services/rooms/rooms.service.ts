@@ -11,7 +11,7 @@ export class RoomsService {
   private urlget : string = "http://192.168.99.102:3000/rooms";
   private urlgetUser : string ;
   
-  private userId : string ;
+  private user : any ;
 
   headers: Headers;
   options: RequestOptions;
@@ -20,7 +20,7 @@ export class RoomsService {
     this.headers = new Headers({ 'Content-Type': 'application/json' });
     this.options = new RequestOptions({ headers: this.headers });
 
-    this.urlgetUser = "http://192.168.99.102:3000/users/"+this.userService.getUser()+"/rooms";
+    this.urlgetUser = "http://192.168.99.102:3000/users/"+this.userService.getUser().id+"/rooms";
   }
   /*
   getRooms(): Observable<Room[]> {
@@ -39,6 +39,7 @@ export class RoomsService {
 }
 
 setRooms(room: Room): Observable<Room> {
+  room.user = this.userService.getUser();
   return this.http.post(this.urlget, JSON.stringify(room), this.options).map(response => response.json())
 }
 

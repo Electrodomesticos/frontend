@@ -34,7 +34,7 @@ export class CategoriesService {
   }
   
   setCategorie(categorie: Categorie): Observable<Categorie> {
-    categorie.user = this.userService.getUser();
+  //  categorie.user = this.userService.getUser();
     return this.http.post(this.urlget, JSON.stringify(categorie), this.options).map(response => response.json())
   }
   

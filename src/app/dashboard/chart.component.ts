@@ -105,7 +105,7 @@ export class ChartComponent {
 
     loadData() {
         this.chartService.getData().subscribe(
-          resAreaData => {this.data=resAreaData.x; console.log('AREAS CARGADAS: ', resAreaData)}
+          resAreaData => {this.data=resAreaData; console.log('AREAS CARGADAS: ', resAreaData)}
         );
       }
 }
