@@ -9,9 +9,12 @@ export class UserService {
   private loggedIn = false;
   redirectUrl: string;
   private currentUser : any;
+  
+  //Para probar localmente descomentar las direcciones del Dock Duh!!
   //private urlSearch = "http://192.168.99.102:3000/users/search/"; 
   private urlSearch = "http://localhost:3000/users/search/"; 
-  private urlLdap = "http://192.168.99.102:3000/ldap";
+  //private urlLdap = "http://192.168.99.102:3000/ldap";
+  private urlLdap = "http://localhost:3000/test";
 
 
   constructor(private http: Http) {
