@@ -9,6 +9,7 @@ import { UserService } from '../../ladp/user.service';
 @Injectable()
 export class CategoriesService {
   private urlget : string = "http://192.168.99.102:3000/categories";
+  //private urlget : string = "http://localhost:3000/categories";
   private urlgetUser : string ;
 
   private currentUser : any;
@@ -21,6 +22,7 @@ export class CategoriesService {
       this.options = new RequestOptions({ headers: this.headers });
 
       this.urlgetUser = "http://192.168.99.102:3000/users/"+this.userService.getUser().id+"/categories";
+      //this.urlgetUser = "http://localhost:3000/users/"+this.userService.getUser().id+"/categories";
       
     }
 
@@ -34,7 +36,7 @@ export class CategoriesService {
   }
   
   setCategorie(categorie: Categorie): Observable<Categorie> {
-  //  categorie.user = this.userService.getUser();
+    categorie.user_id = this.userService.getUser().id;
     return this.http.post(this.urlget, JSON.stringify(categorie), this.options).map(response => response.json())
   }
   

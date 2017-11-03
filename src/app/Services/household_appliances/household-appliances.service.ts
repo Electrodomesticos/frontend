@@ -8,6 +8,7 @@ import { UserService } from '../../ladp/user.service';
 @Injectable()
 export class HouseholdAppliancesService {
   private urlget : string = "http://192.168.99.102:3000/household_appliances";
+  //private urlget : string = "http://localhost:3000/household_appliances";
   private urlgetUser : string;
 
     headers: Headers;
@@ -18,6 +19,7 @@ export class HouseholdAppliancesService {
       this.options = new RequestOptions({ headers: this.headers });
 
       this.urlgetUser = "http://192.168.99.102:3000/users/"+this.userService.getUser().id+"/household_appliances";
+      //this.urlgetUser = "http://localhost:3000/users/"+this.userService.getUser().id+"/household_appliances";
     }
 
     getAppliances(): Observable<Household_appliance[]> {
@@ -30,6 +32,7 @@ export class HouseholdAppliancesService {
   }
   
   setAppliance(appliance: Household_appliance): Observable<Household_appliance> {
+    appliance.user_id = this.userService.getUser().id;
     return this.http.post(this.urlget, JSON.stringify(appliance), this.options).map(response => response.json())
   }
   

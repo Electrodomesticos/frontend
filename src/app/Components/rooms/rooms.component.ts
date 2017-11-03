@@ -43,7 +43,7 @@ export class RoomsComponent implements OnInit {
 
 
 createRoom(room: Room) {
-  this.roomService.setRooms(room).subscribe(
+    this.roomService.setRooms(room).subscribe(
     data => console.log('espacio para un alert', data),
     error => console.error('espacio para un alert fallido'), ()=>this.loadRooms());
   

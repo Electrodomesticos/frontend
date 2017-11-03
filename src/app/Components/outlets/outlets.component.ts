@@ -3,6 +3,7 @@ import { OutletsService } from '../../Services/outlets/outlets.service';
 import { Outlet } from '../../Models/outlet';
 import { Room } from '../../Models/room';
 import { Household_appliance } from '../../Models/household_appliance';
+import { HouseholdAppliancesService } from '../../Services/household_appliances/household-appliances.service';
 
 @Component({
   selector: 'app-outlets',
@@ -27,7 +28,7 @@ export class OutletsComponent implements OnInit {
 
  nOutlet = new Outlet;
 
-  constructor(private outletService: OutletsService) { }
+  constructor(private outletService: OutletsService, private appliancesService: HouseholdAppliancesService) { }
 
   loadOutlets(room): void {
     this.outletService.getOutlets(room.id)
@@ -38,7 +39,7 @@ export class OutletsComponent implements OnInit {
 }
 
 loadAppliances(): void {
-  this.outletService.getAppliances()
+  this.appliancesService.getAppliances()
       .subscribe(
         resApplianceData => this.appliances = resApplianceData,
           error => console.log("Error :: " + error)
@@ -50,7 +51,7 @@ loadAppliances(): void {
   
   console.log("Antes", this.selAppliance)
   console.log("outletid", this.tempData.id)
-  this.outletService.updateAppliance(this.selAppliance).subscribe(
+  this.appliancesService.updateAppliance(this.selAppliance).subscribe(
     data => console.log('espacio para un alert', data),
     error => console.error('espacio para un alert fallido'), ()=>this.loadAppliances());
 }
