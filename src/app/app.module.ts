@@ -31,6 +31,7 @@ import { ChartModule } from 'angular2-highcharts';
 import { ChartComponent }   from './dashboard/chart.component';
 import { ChartService }   from './dashboard/chart.service';
 import { OdometerComponent }   from './dashboard/odometer.component';
+import { OdometerService }   from './dashboard/odometer.service';
 
 
 import { DashboardComponent }   from './dashboard/dashboard.component';
@@ -119,7 +120,8 @@ export function highchartsFactory() {
       useFactory: highchartsFactory
     },
     ChartService,
-    LoggedInGuard
+    LoggedInGuard,
+    OdometerService
   ],
   bootstrap: [AppComponent]
 })

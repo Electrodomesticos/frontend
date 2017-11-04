@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
+import { OdometerService } from './odometer.service';
 
 @Component({
     selector: 'odometer',
@@ -11,7 +12,9 @@ export class OdometerComponent {
     public observable: Observable<boolean>;
     private observer: Observer<boolean>;
 
-    constructor() {
+    public data: number;
+
+    constructor(private odometerService : OdometerService) {
         this.observable = new Observable<boolean>((observer: any) => this.observer = observer).share();
 
         // For auto mode
@@ -19,9 +22,18 @@ export class OdometerComponent {
 
     
       //// setTimeout(this.test(), 2000);
-       setInterval(() => {this.number += Math.random(); this.observer.next(true)}, 2000);
-     
-       
+       setInterval(() => {
+         //  this.number += Math.random(); 
+           this.loadData();
+           this.observer.next(true)
+        }, 2000);
+
     }
+    loadData() {
+        this.odometerService.getData().subscribe(
+          resAreaData => {
+              this.number=resAreaData; }
+        );
+      }
 
 }
