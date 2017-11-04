@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { Observable }           from 'rxjs/Observable';
 
@@ -11,10 +11,10 @@ export class UserService {
   private currentUser : any;
   
   //Para probar localmente descomentar las direcciones del Dock Duh!!
-  //private urlSearch = "http://192.168.99.102:3000/users/search/"; 
-  private urlSearch = "http://localhost:3000/users/search/"; 
-  //private urlLdap = "http://192.168.99.102:3000/ldap";
-  private urlLdap = "http://localhost:3000/test";
+  private urlSearch = "http://192.168.99.102:3000/users/search/"; 
+  //private urlSearch = "http://localhost:3000/users/search/"; 
+  private urlLdap = "http://192.168.99.102:3000/ldap";
+  //private urlLdap = "http://localhost:3000/test";
 
 
   constructor(private http: Http) {
@@ -65,6 +65,11 @@ export class UserService {
   getUser(){
     this.currentUser = JSON.parse(localStorage.getItem('userId'));
     return this.currentUser;
+  }
+
+  ngOnInit(){
+    alert('dsada')
+
   }
 
 }

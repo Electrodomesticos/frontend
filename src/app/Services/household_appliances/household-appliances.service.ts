@@ -23,6 +23,7 @@ export class HouseholdAppliancesService {
     }
 
     getAppliances(): Observable<Household_appliance[]> {
+      this.urlgetUser = "http://192.168.99.102:3000/users/"+this.userService.getUser().id+"/household_appliances";
       return this.http
           .get(this.urlgetUser)
           .map((response: Response) => {

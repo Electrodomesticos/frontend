@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Categorie } from '../../Models/categorie';
 import { Observable } from 'rxjs/Observable';
@@ -26,7 +26,14 @@ export class CategoriesService {
       
     }
 
+    ngOnInit(){
+
+      alert('test')
+
+    }
+
     getCategories(): Observable<Categorie[]> {
+      this.urlgetUser = "http://192.168.99.102:3000/users/"+this.userService.getUser().id+"/categories";
       return this.http
           .get(this.urlgetUser)
           .map((response: Response) => {

@@ -13,7 +13,7 @@ export class ChartService {
   //private urlpost: string = "https://hidden-shore-15479.herokuapp.com/api/v1/areas"
 
 
-  private urlget : string = "http://192.168.99.102:3000//users/"+this.userService.getUser().id+"/current_consumption";
+  private urlget : string = "http://192.168.99.102:3000/users/"+this.userService.getUser().id+"/current_consumption";
 
   headers: Headers;
   options: RequestOptions;
@@ -24,7 +24,11 @@ export class ChartService {
   }
   
   getData()  {
+    this.urlget = "http://192.168.99.102:3000/users/"+this.userService.getUser().id+"/current_consumption";
+  
     return this.http.get(this.urlget).map((response: Response) => response.json());
+
+
   }
 
  
