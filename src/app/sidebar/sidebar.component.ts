@@ -13,7 +13,7 @@ export interface RouteInfo {
 export const ROUTES: RouteInfo[] = [
     { path: 'rooms', title: 'Habitaciones', icon:'ti-home', class: ''},
     { path: 'appliances', title: 'Electrodomésticos', icon:'ti-desktop', class: ''},
-    { path: 'categories', title: 'Categorias', icon:'ti-desktop', class: ''},
+    { path: 'categories', title: 'Categorias', icon:'ti-direction-alt', class: ''},
     { path: 'dashboard', title: 'Dashboard',  icon: 'ti-panel', class: '' },
     { path: 'user', title: 'User Profile',  icon:'ti-user', class: '' },
     //{ path: 'table', title: 'Table List',  icon:'ti-view-list-alt', class: '' },
