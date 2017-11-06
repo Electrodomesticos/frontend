@@ -27,12 +27,18 @@ export class ChartComponent {
     
     public data: number;
 
+    public test = []
+
     private randomValue() {
       return Math.floor(Math.random() * 10) + 0;
     }
      
     
     public ngAfterViewInit() {
+
+        var self = this;
+       
+        
       let opts: any = {
           xAxis: {
             type: 'datetime',
@@ -46,13 +52,13 @@ export class ChartComponent {
                     time = (new Date()).getTime(),
                     i;
   
-                for (i = -18; i <= 0; i += 1) {
+                for (i = -15; i <= 0; i += 1) {
                     data.push({
                         x: time + i * 1000,
                         y: Math.floor(Math.random() * 10) + 0
                     });
                 }
-                return data;
+                return self.test;
             }())
           }]
       };
@@ -85,7 +91,20 @@ export class ChartComponent {
     
     constructor(private chartService: ChartService) {
 
-      
+        alert('constructor')
+        var time = (new Date()).getTime(),
+        i;
+        if(this.test.length==0){
+            for (i = -15; i <= 0; i += 1) {
+                this.test.push({
+                    x: time + i * 1000,
+                    y: 0
+                });
+            }
+        }
+       
+
+
 
      this.loadData();   
         
@@ -98,8 +117,9 @@ export class ChartComponent {
         if (me._chart) {
             
           me._chart['series'][0].addPoint([(new Date()).getTime(), me.data], true, true);
-
-          console.log(me._chart['series'][0])
+          me.test.push({x :(new Date()).getTime(), y : me.data})
+          me.test.shift()
+          console.log(me.test)
 
         }
       }, 2000);
@@ -107,7 +127,12 @@ export class ChartComponent {
 
     loadData() {
         this.chartService.getData().subscribe(
-          resAreaData => {this.data=resAreaData; console.log('AREAS CARGADAS: ', resAreaData)}
+          resAreaData => {
+              this.data=resAreaData; 
+            },
+            ()=>{},
+            ()=>   {    
+                    }
         );
       }
 }
