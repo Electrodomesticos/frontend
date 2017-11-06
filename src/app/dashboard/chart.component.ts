@@ -34,7 +34,7 @@ export class ChartComponent {
     }
      
     
-    public ngAfterViewInit() {
+    public cargaGrafica() {
 
         var self = this;
        
@@ -50,15 +50,16 @@ export class ChartComponent {
                 // generate an array of random data
                 var data = [],
                     time = (new Date()).getTime(),
-                    i;
+                    i, x=0;
   
                 for (i = -15; i <= 0; i += 1) {
                     data.push({
                         x: time + i * 1000,
-                        y: Math.floor(Math.random() * 10) + 0
+                        //y: Math.floor(Math.random() * 10) + 0
+                        y : self.test[i+15]
                     });
                 }
-                return self.test;
+                return data;
             }())
           }]
       };
@@ -91,17 +92,17 @@ export class ChartComponent {
     
     constructor(private chartService: ChartService) {
 
-        alert('constructor')
-        var time = (new Date()).getTime(),
-        i;
-        if(this.test.length==0){
-            for (i = -15; i <= 0; i += 1) {
-                this.test.push({
-                    x: time + i * 1000,
-                    y: 0
-                });
-            }
-        }
+        //alert('constructor')
+        // var time = (new Date()).getTime(),
+        // i;
+        // if(this.test.length==0){
+        //     for (i = -15; i <= 0; i += 1) {
+        //         this.test.push({
+        //             x: time + i * 1000,
+        //             y: 0
+        //         });
+        //     }
+        // }
        
 
 
@@ -112,26 +113,27 @@ export class ChartComponent {
       
       setInterval(function () {
 
-        me.loadData();
+      //  me.loadData();
           var cont = 0;
         if (me._chart) {
             
-          me._chart['series'][0].addPoint([(new Date()).getTime(), me.data], true, true);
-          me.test.push({x :(new Date()).getTime(), y : me.data})
-          me.test.shift()
-          console.log(me.test)
+          me._chart['series'][0].addPoint([(new Date()).getTime(), me.test[15]], true, true);
+          me.test.push({x :(new Date()).getTime(), y : me.test[15]})
+            console.log(me.test)
 
         }
       }, 2000);
     }
 
     loadData() {
+        var self = this
         this.chartService.getData().subscribe(
           resAreaData => {
-              this.data=resAreaData; 
+              self.test=resAreaData; 
             },
             ()=>{},
             ()=>   {    
+                this.cargaGrafica();
                     }
         );
       }
