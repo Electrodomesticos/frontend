@@ -27,7 +27,7 @@ export class ChartComponent {
     
     public data: number;
 
-    public test = []
+    public test = [];
 
     private randomValue() {
       return Math.floor(Math.random() * 10) + 0;
@@ -38,7 +38,7 @@ export class ChartComponent {
 
         var self = this;
        
-        
+ 
       let opts: any = {
           xAxis: {
             type: 'datetime',
@@ -54,7 +54,7 @@ export class ChartComponent {
   
                 for (i = -15; i <= 0; i += 1) {
                     data.push({
-                        x: time + i * 1000,
+                        x: time + i * 6000,
                         //y: Math.floor(Math.random() * 10) + 0
                         y : self.test[i+15]
                     });
@@ -118,11 +118,12 @@ export class ChartComponent {
         if (me._chart) {
             
           me._chart['series'][0].addPoint([(new Date()).getTime(), me.test[15]], true, true);
-          me.test.push({x :(new Date()).getTime(), y : me.test[15]})
+          me.test.push( me.test[15])
+          me.test.shift();
             console.log(me.test)
 
         }
-      }, 2000);
+      }, 5000);
     }
 
     loadData() {
