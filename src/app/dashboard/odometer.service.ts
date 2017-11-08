@@ -28,7 +28,7 @@ export class OdometerService {
   getData()  {
 
     this.urlget = "http://192.168.99.102:3000/users/"+this.userService.getUser().id+"/total_consumption"; 
-    return this.http.get(this.urlget).map((response: Response) => response.json().x);
+    return this.http.get(this.urlget).map((response: Response) => response.json());
 
 
   }

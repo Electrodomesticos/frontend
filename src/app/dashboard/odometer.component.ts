@@ -26,13 +26,13 @@ export class OdometerComponent {
          //  this.number += Math.random(); 
            this.loadData();
            this.observer.next(true)
-        }, 2000);
+        }, 4000);
 
     }
     loadData() {
         this.odometerService.getData().subscribe(
           resAreaData => {
-              this.number=resAreaData; }
+              this.number=resAreaData; debugger;}
         );
       }
 
