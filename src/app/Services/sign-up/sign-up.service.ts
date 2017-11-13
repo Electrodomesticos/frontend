@@ -3,11 +3,12 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { User } from '../../Models/user';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class SignUpService {
 
-  private urlpost : string = "http://192.168.99.102:3000/users";
+  private urlpost : string = environment+"/users";
   //private urlpost : string = "http://localhost:3000/users";
   
     headers: Headers;

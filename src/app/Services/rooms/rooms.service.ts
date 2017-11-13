@@ -4,11 +4,13 @@ import { Room } from '../../Models/room'
 import { Observable } from 'rxjs/Observable';
 import { UserService } from '../../ladp/user.service';
 import 'rxjs/Rx';
+import { environment } from '../../../environments/environment';
+
 
 @Injectable()
 export class RoomsService {
   
-  private urlget : string = "http://192.168.99.102:3000/rooms";
+  private urlget : string = environment.apipath+"/rooms";
   //private urlget : string = "http://localhost:3000/rooms";
   private urlgetUser : string ;
   
@@ -21,7 +23,7 @@ export class RoomsService {
     this.headers = new Headers({ 'Content-Type': 'application/json' });
     this.options = new RequestOptions({ headers: this.headers });
 
-    this.urlgetUser = "http://192.168.99.102:3000/users/"+this.userService.getUser().id+"/rooms";
+    this.urlgetUser = environment.apipath+"/users/"+this.userService.getUser().id+"/rooms";
     //this.urlgetUser = "http://localhost:3000/users/"+this.userService.getUser().id+"/rooms";
   }
   /*
@@ -32,7 +34,7 @@ export class RoomsService {
  
 
   getRooms(): Observable<Room[]> {
-    this.urlgetUser = "http://192.168.99.102:3000/users/"+this.userService.getUser().id+"/rooms";
+    this.urlgetUser = environment.apipath+"/users/"+this.userService.getUser().id+"/rooms";
     return this.http
         .get(this.urlgetUser)
         .map((response: Response) => {

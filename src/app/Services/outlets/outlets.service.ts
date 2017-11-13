@@ -4,13 +4,15 @@ import { Outlet } from '../../Models/outlet'
 import { Household_appliance } from '../../Models/household_appliance';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
+import { environment } from '../../../environments/environment';
+
 
 @Injectable()
 export class OutletsService {
 
-  private urlget : string = "http://192.168.99.102:3000/rooms/";
-  private urlpost : string = "http://192.168.99.102:3000/outlets";
-  private urlgetA : string = "http://192.168.99.102:3000/household_appliances";
+  private urlget : string = environment.apipath+"/rooms/";
+  private urlpost : string = environment.apipath+"/outlets";
+  private urlgetA : string = environment.apipath+"/household_appliances";
 
   //private urlget : string = "http://localhost:3000/rooms/";
   //private urlpost : string = "http://localhost:3000/outlets";

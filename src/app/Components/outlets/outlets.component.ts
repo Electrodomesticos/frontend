@@ -22,6 +22,7 @@ export class OutletsComponent implements OnInit {
   selAppliance = new Household_appliance;
 
   @Input() room: Room;
+  
   //room_id = this.room.id;
   //test = this.room.getId();
 
@@ -97,14 +98,15 @@ turnOutlet(outlet: Outlet){
   
   if(outlet.estate==true){
      outlet.estate=false;
+   
     
   }
   else{
     outlet.estate=true;
-    
+   
   }
   this.outletService.updateOutlet(outlet).subscribe(
-    data => console.log('espacio para un alert', data),
+    data => this.function(),
     error => console.error('espacio para un alert fallido'));
 }
 
@@ -115,6 +117,11 @@ deleteOutlet(outlet) {
     //error => {this.modal.open()},
     error => {'espacio para un alert fallido'},
     ); 
+}
+
+function(){
+
+
 }
 
 

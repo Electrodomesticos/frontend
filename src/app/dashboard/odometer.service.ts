@@ -4,6 +4,8 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 import { UserService } from '../ladp/user.service';
+import { environment } from '../../environments/environment';
+
 
 
 @Injectable()
@@ -15,7 +17,7 @@ export class OdometerService {
   //private urlpost: string = "https://hidden-shore-15479.herokuapp.com/api/v1/areas"
 
 
-  private urlget : string = "http://192.168.99.102:3000/test2";
+  private urlget : string = environment.apipath+"/test2";
 
   headers: Headers;
   options: RequestOptions;
@@ -27,7 +29,7 @@ export class OdometerService {
   
   getData()  {
 
-    this.urlget = "http://192.168.99.102:3000/users/"+this.userService.getUser().id+"/total_consumption"; 
+    this.urlget = environment.apipath+"/users/"+this.userService.getUser().id+"/total_consumption"; 
     return this.http.get(this.urlget).map((response: Response) => response.json());
 
 

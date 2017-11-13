@@ -50,8 +50,8 @@
   
   
   stroke: #49fb35;
-  stroke-dasharray: 494.55px 549.5px;
-  stroke-dashoffset: 494.55px;
+  stroke-dasharray: 82.5px 549.5px;
+  stroke-dashoffset: 82.5px;
   stroke-linecap: round;
   -webkit-transform-origin: 50% 50%;
           transform-origin: 50% 50%;
@@ -85,22 +85,13 @@
 
 @-webkit-keyframes chart-three-label {
   100% {
-    -webkit-transform: translateY(-225rem);
-            transform: translateY(-225rem);
+    -webkit-transform: translateY(-25rem);
+            transform: translateY(-25rem);
   }
 }
 
-@keyframes chart-three-label {
-  100% {
-    -webkit-transform: translateY(-225rem);
-            transform: translateY(-225rem);
-  }
-}
-@-webkit-keyframes offset {
-  100% {
-    stroke-dashoffset: 0;
-  }
-}
+
+
 @keyframes offset {
   100% {
     stroke-dashoffset: 0;

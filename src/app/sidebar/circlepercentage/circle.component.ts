@@ -10,5 +10,14 @@ import { Component, OnInit } from '@angular/core';
 
 export class CircleComponent {
     
+    public width = 100;
+    public height =100;
+    
+
+    test(){
+
+       this.width = 120; 
+       this.height = 120; 
+    }
 
 }

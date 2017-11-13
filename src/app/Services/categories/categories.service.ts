@@ -4,11 +4,13 @@ import { Categorie } from '../../Models/categorie';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 import { UserService } from '../../ladp/user.service';
+import { environment } from '../../../environments/environment';
+
 
 
 @Injectable()
 export class CategoriesService {
-  private urlget : string = "http://192.168.99.102:3000/categories";
+  private urlget : string = environment.apipath+"/categories";
   //private urlget : string = "http://localhost:3000/categories";
   private urlgetUser : string ;
 
@@ -21,7 +23,7 @@ export class CategoriesService {
       this.headers = new Headers({ 'Content-Type': 'application/json' });
       this.options = new RequestOptions({ headers: this.headers });
 
-      this.urlgetUser = "http://192.168.99.102:3000/users/"+this.userService.getUser().id+"/categories";
+      this.urlgetUser = environment.apipath+"/users/"+this.userService.getUser().id+"/categories";
       //this.urlgetUser = "http://localhost:3000/users/"+this.userService.getUser().id+"/categories";
       
     }
@@ -33,7 +35,7 @@ export class CategoriesService {
     }
 
     getCategories(): Observable<Categorie[]> {
-      this.urlgetUser = "http://192.168.99.102:3000/users/"+this.userService.getUser().id+"/categories";
+      this.urlgetUser = environment.apipath+"/users/"+this.userService.getUser().id+"/categories";
       return this.http
           .get(this.urlgetUser)
           .map((response: Response) => {

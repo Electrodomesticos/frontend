@@ -12,7 +12,10 @@ declare var $:any;
 
 export class DashboardComponent implements OnInit{
 
-    constructor(private userService : UserService){}
+    constructor(private userService : UserService){
+        
+
+    }
 
     ngOnInit(){
 

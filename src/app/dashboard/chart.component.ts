@@ -45,7 +45,7 @@ export class ChartComponent {
             tickPixelInterval: 150
           },
           series: [{
-            name: 'Random data',
+            name: 'Current Consumption',
             data: (function () {
                 // generate an array of random data
                 var data = [],
@@ -86,6 +86,7 @@ export class ChartComponent {
     
     public ngOnDestroy() {
       this._chart.destroy();
+      this.test = []
     }
 
    

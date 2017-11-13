@@ -1,7 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { Observable }           from 'rxjs/Observable';
-
+import { environment } from '../../environments/environment'  
 
 
 @Injectable()
@@ -11,14 +11,23 @@ export class UserService {
   private currentUser : any;
   
   //Para probar localmente descomentar las direcciones del Dock Duh!!
-  private urlSearch = "http://192.168.99.102:3000/users/search/"; 
-  //private urlSearch = "http://localhost:3000/users/search/"; 
-  private urlLdap = "http://192.168.99.102:3000/ldap";
-  //private urlLdap = "http://localhost:3000/test";
+  
+
+  private urlSearch = environment.apipath+"/users/search/"; 
+  //private urlSearch : string; 
+  //private urlLdap = environment.apipath+"/ldap";
+  private urlLdap : string;
 
 
   constructor(private http: Http) {
     this.loggedIn = !!localStorage.getItem('auth_token');
+
+    if (environment.apipath == "http://localhost:3000"){
+        this.urlLdap = environment.apipath+"/test"
+    }
+    else {
+      this.urlLdap = environment.apipath+"/ldap"
+    } 
   }
 
   login(email, password) {
