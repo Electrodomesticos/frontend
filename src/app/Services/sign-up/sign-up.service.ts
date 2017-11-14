@@ -8,7 +8,7 @@ import { environment } from '../../../environments/environment';
 @Injectable()
 export class SignUpService {
 
-  private urlpost : string = environment+"/users";
+  private urlpost : string = environment.apipath+"/users";
   //private urlpost : string = "http://localhost:3000/users";
   
     headers: Headers;
