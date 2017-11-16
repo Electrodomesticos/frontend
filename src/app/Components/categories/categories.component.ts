@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { CategoriesService } from '../../Services/categories/categories.service';
 import { Categorie } from '../../Models/categorie';
 
@@ -56,5 +56,7 @@ deleteCategorie(categorie) {
   ngOnInit() {
   	   this.loadCategories();
   }
+
+ 
 
 }

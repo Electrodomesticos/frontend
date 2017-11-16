@@ -25,9 +25,10 @@ export class OutletDetailsComponent implements OnChanges {
     this.outletService.getMyAppliance(outlet.id)
         .subscribe(
           resApplianceData => this.appliance = resApplianceData,
-            error => console.log("Error :: " + error)
+            error => console.log("Error :: " + error), 
+            ()=>this.loadAppliances()
         )
-        
+        //console.log(this.appliance.name)
   }
 
   loadAppliances(): void {

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges  } from '@angular/core';
 import { HouseholdAppliancesService } from '../../Services/household_appliances/household-appliances.service';
+import { CategoriesService } from '../../Services/categories/categories.service';
 import { Household_appliance } from '../../Models/household_appliance';
+import { Categorie } from '../../Models/categorie';
 
 
 
@@ -9,14 +11,15 @@ import { Household_appliance } from '../../Models/household_appliance';
   templateUrl: './household-appliances.component.html',
   styleUrls: ['./household-appliances.component.css']
 })
-export class HouseholdAppliancesComponent implements OnInit {
+export class HouseholdAppliancesComponent implements OnInit, OnChanges {
 
   appliances: Household_appliance[];
   appliance = new Household_appliance;
   tempData = new Household_appliance;
   selectedAppliance: Household_appliance;
+  category = new Categorie;
 
-  constructor(private appliancesService: HouseholdAppliancesService ) {
+  constructor(private appliancesService: HouseholdAppliancesService, private categoriesService: CategoriesService ) {
 
    }
 
@@ -27,6 +30,8 @@ export class HouseholdAppliancesComponent implements OnInit {
             error => console.log("Error :: " + error)
         )
 }
+
+
 
 guardarDatos(appliance){
   console.log("guardarDatos", appliance)
@@ -63,6 +68,11 @@ deleteAppliance(appliance) {
 
   ngOnInit() {
     this.loadAppliances();
+    
   }
+
+  ngOnChanges() {
+    this.loadAppliances();
+}
 
 }
