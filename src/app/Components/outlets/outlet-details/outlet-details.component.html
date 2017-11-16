@@ -1,0 +1,16 @@
+<div *ngIf="appliance.length > 0; else elseBlock">
+
+<div *ngFor="let a of appliance"><p>{{a.name}}</p> <button class="btn btn-sm btn-primary btn-create" (click)="unplug(a)">Desconectar</button> </div>
+
+</div>
+
+<ng-template #elseBlock>
+
+    <select [(ngModel)]="selAppliance">
+        <option *ngFor="let appliance of appliances" [ngValue]="appliance">{{appliance.name}}</option>
+        <option selected><p *ngFor="let a of appliance">{{a.name}}</p></option>
+       
+        </select>
+        <button type="button" class="btn btn-sm btn-primary btn-create"  (click)="updateAppliance(appliance)">Seleccionar</button>
+
+ </ng-template>
