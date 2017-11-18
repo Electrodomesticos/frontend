@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  "apipath": "http://192.168.99.102:3000"
+  "apipath": "http://localhost:3000"
 };

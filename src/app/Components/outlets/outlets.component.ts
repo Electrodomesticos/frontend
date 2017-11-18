@@ -4,6 +4,8 @@ import { Outlet } from '../../Models/outlet';
 import { Room } from '../../Models/room';
 import { Household_appliance } from '../../Models/household_appliance';
 import { HouseholdAppliancesService } from '../../Services/household_appliances/household-appliances.service';
+import { MessageService } from '../../shared/message.service'
+
 
 @Component({
   selector: 'app-outlets',

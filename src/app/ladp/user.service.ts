@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable }           from 'rxjs/Observable';
 import { environment } from '../../environments/environment'  
 
@@ -9,6 +9,8 @@ export class UserService {
   private loggedIn = false;
   redirectUrl: string;
   private currentUser : any;
+  private urlget : string;
+  private percentage : Number;
   
   //Para probar localmente descomentar las direcciones del Dock Duh!!
   
@@ -26,7 +28,8 @@ export class UserService {
         this.urlLdap = environment.apipath+"/test"
     }
     else {
-      this.urlLdap = environment.apipath+"/ldap"
+      //this.urlLdap = environment.apipath+"/ldap"
+      this.urlLdap = environment.apipath+"/test"
     } 
   }
 
@@ -78,6 +81,20 @@ export class UserService {
 
   ngOnInit(){
     alert('dsada')
+
+  }
+
+  lookForPercentage(){
+
+    this.urlget = environment.apipath+"/users/"+this.getUser().id+"/percent";
+    
+      return this.http.get(this.urlget).map((response: Response) => this.percentage = response.json());
+
+  }
+
+  getPercentage(){
+
+    return this.percentage;
 
   }
 

@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService }  from '../ladp/user.service'
+import { Component, OnInit, OnChanges, ChangeDetectorRef } from '@angular/core';
+import { UserService }  from '../ladp/user.service';
+import { SideService }  from './sidebar.service';
+
+
 
 declare var $:any;
 
@@ -35,10 +38,12 @@ export const ROUTES: RouteInfo[] = [
 
 export class SidebarComponent implements OnInit {
     public menuItems: any[];
+    private _percentage : Number;
+    private data : boolean = true;
+    private render = true;
 
-    constructor(private service : UserService){
+    constructor(private cdRef:ChangeDetectorRef, private userService : UserService, private sideService : SideService){
 
-        
 
     }
     ngOnInit() {
@@ -52,11 +57,25 @@ export class SidebarComponent implements OnInit {
         return true;
     }
 
-    isLoggedIn(): boolean {
+    isLoggedIn(a=true): boolean {
+  
         //console.log("sidebar", this.service.isLoggedIn())
-        return this.service.isLoggedIn()
+
+        return (this.userService.isLoggedIn() && a);
         //return false
       }
+
+        test(){
+            
+       
+        
+                this.isLoggedIn(false)
+                this.cdRef.detectChanges();
+                
+            
+        }
+ 
+
     
 
 }

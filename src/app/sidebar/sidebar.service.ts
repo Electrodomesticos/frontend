@@ -9,9 +9,9 @@ import { environment } from '../../environments/environment';
 
 
 @Injectable()
-export class SideBarService {
+export class SideService {
     
-    private urlget : string = environment.apipath+"/users/"+this.userService.getUser().id+"/current_consumption";
+    private urlget : string;
     
       headers: Headers;
       options: RequestOptions;
@@ -22,7 +22,7 @@ export class SideBarService {
       }
       
       getData()  {
-        this.urlget = environment.apipath+"/users/"+this.userService.getUser().id+"/current_consumption";
+        this.urlget = environment.apipath+"/users/"+this.userService.getUser().id+"/percent";
       
         return this.http.get(this.urlget).map((response: Response) => response.json());
     

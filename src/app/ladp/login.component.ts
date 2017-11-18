@@ -89,13 +89,7 @@ export class LoginComponent {
     getUserId(userMail){
       this.userService.lookForUser(userMail)
       
-      // .subscribe(
-      //         res => {
-      //           // this.areas = resAreaData;
-      //             console.log('AREAS CARGADAS: ', res[0].id)
-      //             return res[0].id
-      //         }
-      //       );
+
       .subscribe(  
         res => {
                         // this.areas = resAreaData;
@@ -104,7 +98,8 @@ export class LoginComponent {
                 
                       },
         error => console.log("Error: ", error),
-        () => this.router.navigate(['/dashboard'])
+       // () => this.router.navigate(['/dashboard'])
+          () =>  this.getPercentage()
 
           );
     //   .subscribe(
@@ -118,6 +113,16 @@ export class LoginComponent {
     //           );
 
      }
+
+      getPercentage(){
+        this.userService.lookForPercentage().subscribe(
+          res => {
+          },
+error => console.log("Error: ", error),
+          () => this.router.navigate(['/dashboard'])
+        )
+
+      }
 
         
 }
