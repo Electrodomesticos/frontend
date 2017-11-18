@@ -28,12 +28,7 @@ body {
     -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
     animation: neon1 1.5s ease-in-out infinite alternate;
   }
-  
-  p:nth-child(1) a:hover {
-    color: #FF1177;
-    -webkit-animation: none;
-    animation: none;
-  }
+
   
   p:nth-child(2) a {
     font-size: 1.5em;
@@ -274,3 +269,12 @@ body {
     100% {background-color: #ff0101;}
 
   } 
+
+  @keyframes tilt2 {
+    from {
+      text-shadow: 0 0 10px #ff0101, 0 0 20px #ff0101, 0 0 30px #ff0101, 0 0 40px  #631716, 0 0 70px  #631716, 0 0 80px  #631716, 0 0 100px  #631716, 0 0 150px  #631716;
+    }
+    to {
+      text-shadow: 0 0 5px #ff0101, 0 0 10px #ff0101, 0 0 15px #ff0101, 0 0 20px #631716, 0 0 35px #631716, 0 0 40px #631716, 0 0 50px #631716, 0 0 75px #631716;
+    }
+  }

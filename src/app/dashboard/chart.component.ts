@@ -119,6 +119,12 @@ export class ChartComponent {
         if (me._chart) {
             
           me._chart['series'][0].addPoint([(new Date()).getTime(), me.test[15]], true, true);
+          if(me.test[15]>me.test[14]){
+            alert("aumento")
+          }
+          if(me.test[15]<me.test[14]){
+            alert("disminuyo")
+          }
           me.test.push( me.test[15])
           me.test.shift();
             console.log(me.test)
