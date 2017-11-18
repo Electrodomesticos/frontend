@@ -44,6 +44,16 @@ export class CategoriesService {
           .catch(this.handleError);
   }
   
+  getMyCategories(category): Observable<Categorie> {
+    this.urlgetUser = environment.apipath+"/categories/"+category;
+    return this.http
+        .get(this.urlgetUser)
+        .map((response: Response) => {
+            return <Categorie>response.json();
+        })
+        .catch(this.handleError);
+}
+
   setCategorie(categorie: Categorie): Observable<Categorie> {
     categorie.user_id = this.userService.getUser().id;
     return this.http.post(this.urlget, JSON.stringify(categorie), this.options).map(response => response.json())

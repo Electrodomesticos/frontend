@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnChanges, Input } from '@angular/core';
 import { OutletsService } from '../../Services/outlets/outlets.service';
 import { Outlet } from '../../Models/outlet';
 import { Room } from '../../Models/room';
@@ -12,7 +12,7 @@ import { MessageService } from '../../shared/message.service'
   templateUrl: './outlets.component.html',
   styleUrls: ['./outlets.component.css']
 })
-export class OutletsComponent implements OnInit {
+export class OutletsComponent implements OnChanges {
 
   outlets: Outlet[];
   tempData = new Outlet;
@@ -45,6 +45,13 @@ loadAppliances(): void {
   this.appliancesService.getAppliances()
       .subscribe(
         resApplianceData => this.appliances = resApplianceData,
+          error => console.log("Error :: " + error)
+      )
+}
+loadMyAppliance(outlet): void {
+  this.outletService.getMyAppliance(outlet.id)
+      .subscribe(
+        resApplianceData => this.appliance = resApplianceData,
           error => console.log("Error :: " + error)
       )
 }
@@ -127,10 +134,12 @@ function(){
 }
 
 
-  ngOnInit() {
+  ngOnChanges() {
   
 
   this.loadAppliances();
+  this.loadOutlets(this.room)
+  this.loadMyAppliance(this.tempData)
   }
 
 }

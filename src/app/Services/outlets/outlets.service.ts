@@ -44,6 +44,15 @@ export class OutletsService {
           .catch(this.handleError);
   }
 
+
+  getMyAppliance(outlet): Observable<Household_appliance> {
+    return this.http
+        .get(this.urlpost+"/"+outlet+"/household_appliances")
+        .map((response: Response) => {
+            return <Household_appliance>response.json();
+        })
+        .catch(this.handleError);
+}
   
   updateAppliance(appliance): Observable<Household_appliance> {
     const url = `${this.urlgetA}/${appliance.id}`;

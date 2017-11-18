@@ -61,7 +61,9 @@ import { UserService } from './ladp/user.service';
 import { LoginComponent }          from './ladp/login.component';
 
 
-import { LoggedInGuard } from './ladp/logged-in-guard.service'
+import { LoggedInGuard } from './ladp/logged-in-guard.service';
+import { OutletDetailsComponent } from './Components/outlets/outlet-details/outlet-details.component';
+import { ApplianceDetailsComponent } from './Components/household-appliances/appliance-details/appliance-details.component'
 
 
 export function highchartsFactory() {
@@ -84,7 +86,9 @@ export function highchartsFactory() {
     HouseholdAppliancesComponent,
     CategoriesComponent,
     ChartComponent,
-    OdometerComponent
+    OdometerComponent,
+    OutletDetailsComponent,
+    ApplianceDetailsComponent
     //,LoginComponent
 
   ],

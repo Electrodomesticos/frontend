@@ -21,6 +21,9 @@
                               Consumo W/h
                             </th>
                             <th>
+                              Estado
+                            </th>
+                            <th>
                               Categoria
                             </th>
                             <th>
@@ -40,8 +43,16 @@
                               <td>
                                 {{appliance.electricity_use}}
                               </td>
+                              <td>
+                                <div *ngIf="appliance.outlet_id">
+                                  Conectado
+                                </div>
+                                <div *ngIf="!appliance.outlet_id">
+                                    Desconectado
+                                </div>
+                              </td>
                                <td>
-                                {{appliance.categorie_name}}
+                                <app-appliance-details [appliance]="appliance"></app-appliance-details>
                               </td>
                               <td>
                                         <div class="options">
