@@ -86,7 +86,7 @@ export class UserService {
 
   lookForPercentage(){
 
-    this.urlget = environment.apipath+"/users/"+this.getUser().id+"/percent";
+    //this.urlget = environment.apipath+"/users/"+this.getUser().id+"/percent";
     
       return this.http.get(this.urlget).map((response: Response) => this.percentage = response.json());
 

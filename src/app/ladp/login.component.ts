@@ -98,8 +98,8 @@ export class LoginComponent {
                 
                       },
         error => console.log("Error: ", error),
-       // () => this.router.navigate(['/dashboard'])
-          () =>  this.getPercentage()
+          () => this.router.navigate(['/dashboard'])
+         // () =>  this.getPercentage()
 
           );
     //   .subscribe(
