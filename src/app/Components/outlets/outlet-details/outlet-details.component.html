@@ -1,6 +1,6 @@
 <div *ngIf="appliance.length > 0; else elseBlock">
 
-<div *ngFor="let a of appliance"><p>{{a.name}}</p> <button type="button" class="btn btn-danger btn-just-icon" (click)="unplug(a)"><i class="ti-plug"></i></button> </div>
+<div *ngFor="let a of appliance"><p style="position:absolute">{{a.name}}</p> <button style="margin-left:43%" type="button" class="btn btn-danger btn-just-icon" (click)="unplug(a)"><i class="ti-plug"></i></button> </div>
 
 </div>
 

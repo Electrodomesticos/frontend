@@ -26,7 +26,7 @@ export class OdometerComponent {
          //  this.number += Math.random(); 
            this.loadData();
          //  this.observer.next(true)
-        }, 6000);
+        }, 10000);
 
     }
     loadData() {
