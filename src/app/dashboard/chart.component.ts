@@ -5,7 +5,10 @@ import {
     ElementRef,
     AfterViewInit,
     OnDestroy,
-    ViewChild
+    ViewChild,
+    Input, 
+    Output,
+    EventEmitter
 } from '@angular/core';
 import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
 import { ChartService } from './chart.service';
@@ -22,6 +25,8 @@ import { ChartService } from './chart.service';
 })
 export class ChartComponent {
     @ViewChild('chart') public chartEl: ElementRef;
+
+    @Output() onVoted = new EventEmitter();
     
     private _chart: any;
     
@@ -92,7 +97,7 @@ export class ChartComponent {
    
     
     constructor(private chartService: ChartService) {
-
+      
         //alert('constructor')
         // var time = (new Date()).getTime(),
         // i;
@@ -104,7 +109,9 @@ export class ChartComponent {
         //         });
         //     }
         // }
+
        
+
 
 
 
@@ -112,7 +119,10 @@ export class ChartComponent {
         
       const me = this;
       
+      
       setInterval(function () {
+
+     
 
       //  me.loadData();
           var cont = 0;
@@ -120,11 +130,14 @@ export class ChartComponent {
             
           me._chart['series'][0].addPoint([(new Date()).getTime(), me.test[15]], true, true);
           if(me.test[15]>me.test[14]){
-            alert("aumento")
+            me.vote({bool:"true", current:me.test[15]})
           }
           if(me.test[15]<me.test[14]){
-            alert("disminuyo")
+            me.vote({bool:"false", current:me.test[15]})
           }
+        //   if(me.test[15]==me.test[14]){
+        //     me.vote(false)
+        //   }
           me.test.push( me.test[15])
           me.test.shift();
             console.log(me.test)
@@ -138,6 +151,7 @@ export class ChartComponent {
         this.chartService.getData().subscribe(
           resAreaData => {
               self.test=resAreaData; 
+              self.vote({bool:"initial", current:this.test[15]});
             },
             ()=>{},
             ()=>   {    
@@ -145,4 +159,15 @@ export class ChartComponent {
                     }
         );
       }
+
+      vote(aaa){
+        
+                this.onVoted.emit(aaa);
+                
+        
+              }
+
+  
+
+
 }

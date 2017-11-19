@@ -13,11 +13,27 @@ declare var $:any;
 
 export class DashboardComponent implements OnInit{
 
+    current : string = "=";
+    currentConsumption : string = "~";
+    styleClass : string = "pruebaneon2";
+
     constructor(private userService : UserService){
         
 
     }
 
+    onVoted(agreed) {
+
+      if(agreed.bool=="true"){
+        this.current = "🡑"
+        this.styleClass = "pruebaneon1";
+      }
+      if(agreed.bool=="false") {
+        this.current = "🡓"
+        this.styleClass = "pruebaneon3";
+      }
+      this.currentConsumption = agreed.current
+    }
     ngOnInit(){
 
 
@@ -113,5 +129,7 @@ export class DashboardComponent implements OnInit{
           labels: ['62%','32%','6%'],
           series: [62, 32, 6]
         });
+
+       
     }
 }
