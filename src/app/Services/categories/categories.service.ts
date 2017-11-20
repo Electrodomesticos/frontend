@@ -84,6 +84,13 @@ getMyAppliances(categorie): Observable<Household_appliance[]> {
     .map(this.extractData)
     .catch(this.handleError);         
   }
+
+  turnCategory(category, estate){
+    let body = {"nestate": estate};
+    return this.http.post(this.urlget+"/"+category+"/turn",body, this.options).map((res: Response) => res.json())
+    .catch(this.handleError);
+
+  }
   
   private handleError(error: Response) {
       return Observable.throw(error.statusText);

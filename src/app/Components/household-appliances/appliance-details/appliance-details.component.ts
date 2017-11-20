@@ -10,10 +10,13 @@ import { Household_appliance } from '../../../Models/household_appliance';
 })
 export class ApplianceDetailsComponent implements OnChanges {
 
+  //category: Categorie[];
+  category = new Categorie;
+
   @Input() appliance: Household_appliance;
 
-  category = new Categorie;
-  //categories: Categorie[];
+  
+  
 
   constructor(private categoriesService: CategoriesService) { }
 
@@ -23,7 +26,7 @@ export class ApplianceDetailsComponent implements OnChanges {
     console.log(appliance.name)
     this.categoriesService.getMyCategories(appliance.category_id)
         .subscribe(
-          resApplianceData => this.category = resApplianceData,
+          resCategoryData => this.category = resCategoryData,
             error => console.log("Error :: " + error)
         )
       }

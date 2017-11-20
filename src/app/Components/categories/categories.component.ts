@@ -45,6 +45,20 @@ createCategorie(categorie: Categorie) {
   
 }
 
+turnOn(category: Categorie){
+  this.categoriesService.turnCategory(category.id,true).subscribe(
+    data => console.log('espacio para un alert', data),
+    error => console.error('espacio para un alert fallido')
+  )
+}
+
+turnOff(category: Categorie){
+  this.categoriesService.turnCategory(category.id,false).subscribe(
+    data => console.log('espacio para un alert', data),
+    error => console.error('espacio para un alert fallido')
+  )
+}
+
 loadMyAppliances(categorie): void {
   this.categoriesService.getMyAppliances(categorie)
   .subscribe(

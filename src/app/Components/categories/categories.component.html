@@ -27,6 +27,9 @@
                             <th>
                               Eliminar
                             </th>     
+                            <th>
+                              Apagar/Encender
+                            </th> 
                                              
                           </tr>
                         </thead>
@@ -53,7 +56,13 @@
                                       <div class="options">
                                           <a class="ti-trash" (click)="deleteCategorie(categorie)"></a>
                                       </div>
-                                    </td>                          
+                                    </td>      
+                                    <td> 
+                                      <div class="options">
+                                          <button class="btn btn btn-just-icon" (click)="turnOff(categorie)"><i class="ti-bolt"></i></button>
+                                          <button class="btn btn-warning btn-just-icon" (click)="turnOn(categorie)"><i class="ti-bolt"></i></button>
+                                      </div>
+                                    </td>                     
                                        
                             </tr>
                         </tbody>
