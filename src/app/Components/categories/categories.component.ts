@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { CategoriesService } from '../../Services/categories/categories.service';
 import { Categorie } from '../../Models/categorie';
+import { Household_appliance } from '../../Models/household_appliance';
 
 @Component({
   selector: 'app-categories',
@@ -11,7 +12,8 @@ export class CategoriesComponent implements OnInit {
 	categories: Categorie[];
   	categorie = new Categorie;
   	tempData = new Categorie;
-  	selectedCategorie: Categorie;
+    selectedCategorie: Categorie;
+    appliances: Household_appliance[];
 
   constructor(private categoriesService: CategoriesService) { }
 
@@ -41,6 +43,14 @@ createCategorie(categorie: Categorie) {
     data => console.log('espacio para un alert', data),
     error => console.error('espacio para un alert fallido'), ()=>this.loadCategories());
   
+}
+
+loadMyAppliances(categorie): void {
+  this.categoriesService.getMyAppliances(categorie)
+  .subscribe(
+    resApplianceData => this.appliances = resApplianceData,
+      error => console.log("Error :: " + error)
+  )
 }
 
 deleteCategorie(categorie) {
