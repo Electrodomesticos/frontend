@@ -43,6 +43,16 @@ export class HouseholdAppliancesService {
         })
         .catch(this.handleError);
 }
+
+getAppliancesB(): Observable<Household_appliance[]> {
+  this.urlgetUser = environment.apipath+"/users/"+this.userService.getUser().id+"/nocat";
+  return this.http
+      .get(this.urlgetUser)
+      .map((response: Response) => {
+          return <Household_appliance[]>response.json();
+      })
+      .catch(this.handleError);
+}
   
   setAppliance(appliance: Household_appliance): Observable<Household_appliance> {
     appliance.user_id = this.userService.getUser().id;

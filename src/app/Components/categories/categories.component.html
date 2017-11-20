@@ -20,7 +20,9 @@
                             <th>
                               Electrodomésticos
                             </th> 
-                            
+                            <th>
+                              Agregar
+                            </th>
                             <th>
                               Editar
                             </th> 
@@ -40,22 +42,23 @@
                               </td>
 
                               <td>
-                                <div class="options">
-                                    <a class="ti-desktop" (click)="guardarDatos(categorie)" (click)="applianceModal.open(categorie)" (click)="loadMyAppliances(categorie)"></a>
-                                </div>
+                                  <button type="button" class="btn btn-info btn-just-icon" (click)="guardarDatos(categorie)" (click)="applianceModal.open(categorie)" (click)="loadMyAppliances(categorie)"><i class="ti-desktop"></i></button>
                                 
                             </td>  
+
+                            <td>
+                                <button type="button" class="btn btn-info btn-just-icon" (click)="guardarDatos(categorie)" (click)="applianceBModal.open(categorie)" (click)="loadMyAppliancesB()"><i class="ti-plus"></i></button>
+                            </td>
                               
                                   <td>
-                                        <div class="options">
-                                            <a class="ti-settings" (click)="guardarDatos(categorie)" (click)="updateModal.open(categorie)"></a>
-                                        </div>
+                                       
+
+                                        <button type="button" class="btn btn-info btn-just-icon" (click)="guardarDatos(categorie)" (click)="updateModal.open(categorie)"><i class="ti-settings"></i></button>
                                         
                                     </td>  
                                     <td> 
-                                      <div class="options">
-                                          <a class="ti-trash" (click)="deleteCategorie(categorie)"></a>
-                                      </div>
+                                     
+                                      <button type="button" class="btn btn-danger btn-just-icon" (click)="deleteCategorie(categorie)"><i class="ti-trash"></i></button>
                                     </td>      
                                     <td> 
                                       <div class="options">
@@ -141,18 +144,46 @@
           
         </bs-modal-header>
         <bs-modal-body>
+
+            <div *ngFor="let appliance of appliances"><p style="position:absolute">{{appliance.name}}</p> <button style="margin-left:43%" type="button" class="btn btn-danger btn-just-icon" (click)="deleteAppliance(appliance)"><i class="ti-close"></i></button> </div>
             
-          <p *ngFor="let appliance of appliances">{{appliance.name}} </p>
+          
              
         </bs-modal-body>
         <bs-modal-footer>
             <button type="button" class="btn btn-default" data-dismiss="modal" (click)="applianceModal.dismiss()">
-                Cancelar
+                Cerrar
               </button>
               
         </bs-modal-footer>
       
    </bs-modal>
+
+
+   <bs-modal #applianceBModal>
+    
+      <bs-modal-header [showDismiss]="true">
+        <h4 class="modal-title">
+            Agregar Electrodomésticos
+        </h4>
+        
+      </bs-modal-header>
+      <bs-modal-body>
+        <h5>Electrodomésticos Disponibles</h5>
+          
+        <div *ngFor="let appliance of appliancesB"><p style="position:absolute">{{appliance.name}}</p> <button style="margin-left:43%" type="button" class="btn btn-info btn-just-icon" (click)="updateAppliance(appliance)"><i class="ti-plus"></i></button> </div>
+
+        
+           
+      </bs-modal-body>
+      <bs-modal-footer>
+          <button type="button" class="btn btn-default" data-dismiss="modal" (click)="applianceBModal.dismiss()">
+              Cerrar
+            </button>
+            
+      </bs-modal-footer>
+    
+ </bs-modal>
     
  
     

@@ -1,5 +1,6 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, OnChanges} from '@angular/core';
 import { CategoriesService } from '../../Services/categories/categories.service';
+import { HouseholdAppliancesService } from '../../Services/household_appliances/household-appliances.service';
 import { Categorie } from '../../Models/categorie';
 import { Household_appliance } from '../../Models/household_appliance';
 
@@ -8,14 +9,16 @@ import { Household_appliance } from '../../Models/household_appliance';
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.css']
 })
-export class CategoriesComponent implements OnInit {
+export class CategoriesComponent implements OnInit, OnChanges{
 	categories: Categorie[];
   	categorie = new Categorie;
   	tempData = new Categorie;
     selectedCategorie: Categorie;
     appliances: Household_appliance[];
+    appliancesB: Household_appliance[];
+    selAppliance = new Household_appliance;
 
-  constructor(private categoriesService: CategoriesService) { }
+  constructor(private categoriesService: CategoriesService, private appliancesService: HouseholdAppliancesService) { }
 
   loadCategories(): void {
     this.categoriesService.getCategories()
@@ -67,6 +70,14 @@ loadMyAppliances(categorie): void {
   )
 }
 
+loadMyAppliancesB(): void {
+  this.appliancesService.getAppliancesB()
+  .subscribe(
+    resApplianceData => this.appliancesB = resApplianceData,
+      error => console.log("Error :: " + error)
+  )
+}
+
 deleteCategorie(categorie) {
   this.categoriesService.deleteCategorie(categorie.id)
   .subscribe(
@@ -77,9 +88,36 @@ deleteCategorie(categorie) {
     ); 
 }
 
+updateAppliance(appliance){
+  appliance.category_id=this.tempData.id;
+  
+  console.log("Antes", appliance)
+  console.log("outletid", this.tempData.id)
+  this.appliancesService.updateAppliance(appliance).subscribe(
+    data => console.log('espacio para un alert', data),
+    error => console.error('espacio para un alert fallido'), ()=>this.loadMyAppliancesB());
+}
+
+deleteAppliance(appliance){
+  appliance.category_id=null;
+  
+  console.log("Antes", appliance)
+  console.log("outletid", this.tempData.id)
+  this.appliancesService.updateAppliance(appliance).subscribe(
+    data => console.log('espacio para un alert', data),
+    error => console.error('espacio para un alert fallido'),()=>this.loadMyAppliances(this.tempData));
+}
+
   ngOnInit() {
-  	   this.loadCategories();
+       this.loadCategories();
+      
   }
+
+  ngOnChanges() {
+    
+    this.loadMyAppliancesB();
+    this.loadMyAppliances(this.tempData);
+}
 
  
 
