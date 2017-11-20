@@ -1,6 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Categorie } from '../../Models/categorie';
+import { Household_appliance } from '../../Models/household_appliance';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 import { UserService } from '../../ladp/user.service';
@@ -52,6 +53,15 @@ export class CategoriesService {
             return <Categorie>response.json();
         })
         .catch(this.handleError);
+}
+
+getMyAppliances(categorie): Observable<Household_appliance[]> {
+  return this.http
+      .get(this.urlget+"/"+categorie.id+"/household_appliances")
+      .map((response: Response) => {
+          return <Household_appliance[]>response.json();
+      })
+      .catch(this.handleError);
 }
 
   setCategorie(categorie: Categorie): Observable<Categorie> {

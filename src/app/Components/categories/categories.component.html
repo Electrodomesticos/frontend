@@ -17,6 +17,9 @@
                             <th>
                               Nombre
                             </th>
+                            <th>
+                              Electrodomésticos
+                            </th> 
                             
                             <th>
                               Editar
@@ -32,6 +35,13 @@
                               <td>
                                 {{categorie.name}}
                               </td>
+
+                              <td>
+                                <div class="options">
+                                    <a class="ti-desktop" (click)="guardarDatos(categorie)" (click)="applianceModal.open(categorie)" (click)="loadMyAppliances(categorie)"></a>
+                                </div>
+                                
+                            </td>  
                               
                                   <td>
                                         <div class="options">
@@ -88,7 +98,7 @@
         <form (ngSubmit)="updateCategorie(categorie)" #postForm="ngForm">
           <bs-modal-header [showDismiss]="true">
             <h4 class="modal-title">
-                Ingrese la información de la Habitación
+                Ingrese la información de la Categoría
             </h4>
           </bs-modal-header>
           <bs-modal-body>
@@ -111,7 +121,31 @@
           </bs-modal-footer>
         </form>
      </bs-modal>
+
+
+     <bs-modal #applianceModal>
+      
+        <bs-modal-header [showDismiss]="true">
+          <h4 class="modal-title">
+              Electrodomésticos
+          </h4>
+          
+        </bs-modal-header>
+        <bs-modal-body>
+            
+          <p *ngFor="let appliance of appliances">{{appliance.name}} </p>
+             
+        </bs-modal-body>
+        <bs-modal-footer>
+            <button type="button" class="btn btn-default" data-dismiss="modal" (click)="applianceModal.dismiss()">
+                Cancelar
+              </button>
+              
+        </bs-modal-footer>
+      
+   </bs-modal>
     
+ 
     
     
     
