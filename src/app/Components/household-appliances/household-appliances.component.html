@@ -94,12 +94,7 @@
                    </label>
                    <input required id="electricity_use" type="number" class="form-control" placeholder="Ingrese el domicilio" #electricity_use='ngModel' [(ngModel)]="appliance.electricity_use" name='electricity_use'>
                </div>
-              <div class="form-group">
-                <label for="categorie_name">
-                  Categoria
-                </label>
-                  <input required id="categorie_name" type="string" class="form-control" placeholder="Ingrese la categoria" #categorie_name='ngModel' [(ngModel)]="appliance.categorie_name" name='categorie_name'>
-              </div>
+           
           </bs-modal-body>
           <bs-modal-footer>
              <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">
@@ -134,12 +129,7 @@
                     </label>
                     <input required id="electricity_use" type="number" class="form-control" value={{tempData.electricity_use}} #electricity_use='ngModel' [(ngModel)]="appliance.electricity_use" name='electricity_use'>
                 </div>
-              <div class="form-group">
-                <label for="categorie_name">
-                  Categoria
-                </label>
-                  <input required id="categorie_name" type="string" class="form-control" placeholder="Ingrese la categoria" #categorie_name='ngModel' [(ngModel)]="appliance.categorie_name" name='categorie_name'>
-              </div>
+            
           </bs-modal-body>
           <bs-modal-footer>
               <button type="button" class="btn btn-default" data-dismiss="modal" (click)="updateModal.dismiss()">
