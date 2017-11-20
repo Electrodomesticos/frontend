@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
 import { UserService } from '../ladp/user.service';
+import { OdometerService } from './odometer.service';
+import { Observable, Observer } from 'rxjs';
+
 
 declare var $:any;
 
@@ -16,12 +19,37 @@ export class DashboardComponent implements OnInit{
     current : string = "=";
     currentConsumption : string = "~";
     styleClass : string = "pruebaneon2";
+    public data: number;
+    public observable: Observable<boolean>;
+    private observer: Observer<boolean>;
+    public number: number = 0;
+    private config1 = { auto: true, format: '(,ddd).ddddddddddd' };
+    private config2 : string = "{ auto: true, format: '(,ddd)' }"
+    
 
-    constructor(private userService : UserService){
-        
+
+
+    constructor(private odometerService : OdometerService) {
+      this.observable = new Observable<boolean>((observer: any) => this.observer = observer).share();
+
+      // For auto mode
+     // setTimeout(() => this.number += this.number, 200); // Update on 5 seconds
+
+  
+    //// setTimeout(this.test(), 2000);
+     setInterval(() => {
+       //  this.number += Math.random(); 
+         this.loadData();
+       //  this.observer.next(true)
+      }, 10000);
 
     }
-
+    loadData() {
+      this.odometerService.getData().subscribe(
+        resAreaData => {
+            this.number=resAreaData;}
+      );
+    }
     onVoted(agreed) {
 
       if(agreed.bool=="true"){
