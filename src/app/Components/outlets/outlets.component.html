@@ -56,10 +56,12 @@
                             </td>  
                             <td>
                                 <div *ngIf="outlet.estate">
-                                  encendido
+                                    <a>
+                                    <span class="ti-light-bulb" style="color:yellow; font-size: 2em;"></span>
+                                    </a>
                                 </div>
                                 <div *ngIf="!outlet.estate">
-                                    apagado
+                                    <span class="ti-light-bulb" style="font-size: 2em;"></span>
                                 </div>
                             </td>  
                             <td>
